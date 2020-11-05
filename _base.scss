@@ -7,16 +7,9 @@ body{
     padding:2%;
     margin:2%;
 */
-@font-face {
-    font-family: 'Roboto';
-    src: url('roboto.eot'); /* IE9 Compat Modes */
-    src: url('roboto.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('roboto.woff') format('woff'), /* Modern Browsers */
-    url('roboto.ttf')  format('truetype'), /* Safari, Android, iOS */
-    url('roboto.svg#svgFontName') format('svg'); /* Legacy iOS */
-  }
+
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     position: absolute;
     top: 0; bottom: 0; left: 0; right: 0;
     height: 100%;

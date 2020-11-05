@@ -143,12 +143,19 @@ h5{
 
 }
 .about_details p{
+  margin:20% 10% 0 20%;
+  max-height:40vh;
 
-    margin:20% 20% 0 20%;
-   
-    
-    height:40vh;
 }
+
+.skill_progress{
+    margin:10% 10% 0 10%;
+    max-height:70%;
+}
+.progress{
+  margin:5%;
+}
+
 /*
 .projects{
     background-color:#12343b;
@@ -184,13 +191,23 @@ color:black;
 .card-img-top{
     float:left;
 }*/
-
-  .container {
-      margin-top:1%;
-    background-color:#12343b;
+.portfolio_page{
+  margin-top:1%;
+  background-color:#12343b;
+  max-height: 300%;
+  max-width: 100%;
+  display:grid;
+  grid-template-rows:12% 85%;
+}
+.portfolio_head{
+  grid-row: 1/2;
+  color:white;
+  font-size: 3rem;
+  margin:5% 0 0 3%;
+}
+  .container { 
+    grid-row:2/3;
     display: grid;
-    max-height: 300%;
-    max-width: 100%;
     gap: 1.5rem;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto ;
@@ -281,6 +298,103 @@ color:black;
         "text";
     }
   }
+  .contact_page{
+    background-color:#12343b;
+   margin-top:1%;
+    max-height: 150%;
+    width:100%;
+    display:grid;
+    grid-template-columns:5% 40% 40% 5%;
+    grid-template-rows:2fr 8fr 2fr;
+   
+  }
+  .contact_head{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    color:white;
+  }
+  .card_map{
+    grid-column: 2/4;
+    grid-row: 2/3;
+    display:grid;
+    grid-template-columns: 2;
+    grid-gap:1%;
+  }
+  .card{
+    grid-column:1/2;
+    
+
+  }
+  .maps{
+    grid-column:2/3;  
+    border:5 px solid white;
+  }
+  .google-maps-container{
+    padding: 0 ;
+    height: 30rem;
+    width: 30rem;
+    
+}
+.google-maps-container iframe{
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    
+}
+  .form{
+    border-radius:5px;
+    margin-left:5%;
+    width:75%;
+  }
+
+  /*.contact_head{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    color:white;
+  }
+  .card_detail{
+    margin:1%;
+    max-height:100%;
+    max-width:90%;
+    grid-column:2/4;
+    grid-row: 2/3;
+   
+  }
+  .card{
+   width:100vw;;
+    max-height:85%;
+  }
+ 
+ .card_map{
+   border:5px solid white;
+   margin:2%;
+   display:flex;
+   width:100%;
+ }
+  .form{
+    border-radius:5px;
+    margin-left:5%;
+    width:75%;
+  }
+  
+.maps
+  .map-container-6{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+    }
+    .map-container-6 iframe{
+    left:0;
+    top:0;
+    
+    height:100%;
+    width:100%;
+    position:absolute;
+    }*/
+   
+
+
 /**/
 
 
