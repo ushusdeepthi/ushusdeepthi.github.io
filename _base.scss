@@ -7,7 +7,7 @@ body{
     padding:2%;
     margin:2%;
 */
-
+/*
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -17,12 +17,14 @@ body:before {
     background: url("../images/image.jpg");
     background-size: cover;
     z-index: -1; /* Keep the background behind the content */
-    height: 22.5%; width: 20%; /* Using Glen Maddern's trick /via @mente */
+   /* height: 22.5%; width: 20%; /* Using Glen Maddern's trick /via @mente */
 
-    /* don't forget to use the prefixes you need */
+    /* don't forget to use the prefixes you need 
     transform: scale(5);
     transform-origin: top left;
     filter: blur(1px);
+}*/
+*{
+    box-sizing: border-box;    
 }
-
 
