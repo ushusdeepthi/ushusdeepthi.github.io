@@ -27,6 +27,35 @@ body:before {
   box-sizing: border-box;
 }
 
+/*{
+    box-sizing: border-box;    
+}
+
+body{
+    background-image: url("../images/image.jpg");
+    padding:2%;
+    margin:2%;
+*/
+/*
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body:before {
+    content: "";
+    position: absolute;
+    background: url("../images/image.jpg");
+    background-size: cover;
+    z-index: -1; /* Keep the background behind the content */
+/* height: 22.5%; width: 20%; /* Using Glen Maddern's trick /via @mente */
+/* don't forget to use the prefixes you need 
+    transform: scale(5);
+    transform-origin: top left;
+    filter: blur(1px);
+}*/
+* {
+  box-sizing: border-box;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -43,6 +72,7 @@ body:before {
 
 .social {
   width: 20%;
+  align-self: center;
 }
 
 .social i {
@@ -159,6 +189,9 @@ body:before {
     margin-right: 30px;
     max-height: 15vh;
   }
+  .social {
+    width: 50%;
+  }
 }
 
 .wrapper {
@@ -209,7 +242,7 @@ body:before {
 }
 
 .grid_container {
-  margin-top: 1%;
+  margin-top: 2%;
   color: bisque;
   background-color: #12343b;
   height: 100vh;
@@ -291,6 +324,15 @@ body:before {
   }
 }
 
+.skill_progress {
+  margin: 10% 10% 0 10%;
+  max-height: 70%;
+}
+
+.progress {
+  margin: 5%;
+}
+
 .projects {
   margin-top: 1%;
   color: bisque;
@@ -336,10 +378,12 @@ h1 {
 }
 
 .yatzy, .quiz, .acme, .cv {
+  font-size: 0.75rem;
   display: grid;
-  grid-template-columns: 0.75fr 1fr;
-  grid-template-rows: 0.5fr 1fr 0.5fr;
-  grid-template-areas: "p_img p_head" "p_img p_desc" "p_link p_desc";
+  grid-gap: 0.2rem;
+  grid-template-columns: 0.5fr 1fr;
+  grid-template-rows: 0.1fr 1fr 0.5fr;
+  grid-template-areas: "p_img p_head" "p_img p_desc" "p_link p_link";
 }
 
 .p_img {
@@ -356,6 +400,7 @@ h1 {
 
 .p_link {
   grid-area: p_link;
+  justify-self: center;
 }
 
 .contact_link {
@@ -368,13 +413,25 @@ h1 {
   margin-bottom: 1rem;
 }
 
-.skill_progress {
-  margin: 10% 10% 0 10%;
-  max-height: 70%;
+@media only screen and (max-width: 750px) {
+  .projects {
+    height: 150vh;
+    grid-template-columns: 0.1fr 1fr 0.1fr;
+    grid-template-rows: 0.25fr 0.5fr 1fr 1fr 1fr 1fr 0.1fr;
+    grid-template-areas: ". . ." ".  h1 ." ".  yatzy ." ". quiz ." ". acme ." ". cv ." ". . .";
+  }
+  .p_img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
-.progress {
-  margin: 5%;
+@media only screen and (max-width: 550px) {
+  .projects {
+    height: 160vh;
+    grid-template-columns: 1fr 1000fr 1fr;
+    grid-template-rows: 0.5fr 0.25fr 1fr 1fr 1fr 1fr 0.1fr;
+  }
 }
 
 .contact_page {
@@ -384,9 +441,10 @@ h1 {
   height: 100vh;
   display: grid;
   grid-gap: 1rem;
+  justify-content: center;
   grid-template-columns: 0.2fr 1fr 1fr 0.2fr;
-  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: ". . . . " ". contact_head . .  " ". contact_form maps ." ". contact_form maps ." ". contact_form maps ." ". contact_form  maps ." ". . . . ";
+  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: ". . . . " ". contact_head . .  " ". contact_form maps ." ". contact_form maps ." ". contact_form maps ." ". contact_form  maps ." ". contact_form  maps ." ". contact_form  maps ." ". . . . ";
 }
 
 .contact_head {
@@ -395,14 +453,30 @@ h1 {
 }
 
 .contact_form {
+  max-width: 50rem;
+  max-height: 100%;
   background-color: white;
   color: black;
   padding-left: 1rem;
   grid-area: contact_form;
+  display: flex;
+  flex-direction: column;
 }
 
 .maps {
   grid-area: maps;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 700px) {
+  .contact_page {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 0.25fr 0.25fr 1fr 1fr;
+    grid-template-areas: ". . ." ". contact_head ." ". contact_form ." ". maps .";
+  }
 }
 
 .bottomNavigation {
@@ -437,6 +511,4 @@ h1 {
     justify-content: space-around;
   }
 }
-
-/**/
 /*# sourceMappingURL=cv.css.map */

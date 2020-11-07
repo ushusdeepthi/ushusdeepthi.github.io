@@ -1,6 +1,9 @@
 @import'./variables';
 @import'./base';
 
+@import'./variables';
+@import'./base';
+
 .nav{
   display:flex;
   justify-content: space-between;
@@ -10,21 +13,23 @@
   top:0px;
   z-index:999;
 }
-.topNavigation{
+  .topNavigation{
   display:none;
-}
-.social{
+  }
+
+  .social{
   width:20%;
-}
-.social i{
+   align-self: center;
+  }
+  .social i{
   margin:5%;
-}
-#links{
-width:80%;
-}
-#links> *{
-margin:2%;
-}
+  }
+  #links{
+  width:80%;
+  }
+  #links> *{
+  margin:2%;
+  }
 
 @media screen and (max-width:650px){
   #links{display:none;}
@@ -139,6 +144,9 @@ nav li a{
     margin-right: 30px;
     max-height: 15vh;
 }
+.social {
+  width:50%;
+}
 }
 
 .wrapper{
@@ -198,11 +206,10 @@ nav li a{
     text-align:right;
   }
 
-
 }
 
 .grid_container{
-  margin-top:1%;
+  margin-top:2%;
   color:$accent_color;
   background-color: $color-background;
   height:100vh;
@@ -290,7 +297,13 @@ border:0.5rem solid white;
   text-align:center;
 }
 }
-
+.skill_progress{
+  margin:10% 10% 0 10%;
+  max-height:70%;
+}
+.progress{
+margin:5%;
+}
 
 .projects{
  margin-top:1%;
@@ -336,12 +349,14 @@ h1{
   grid-area:cv;
 }
 .yatzy,.quiz,.acme,.cv{
+  font-size:0.75rem;
   display:grid;
-  grid-template-columns:0.75fr 1fr;
-  grid-template-rows: 0.5fr 1fr 0.5fr;
+  grid-gap:0.2rem;
+  grid-template-columns:0.5fr 1fr;
+  grid-template-rows: 0.1fr 1fr 0.5fr;
   grid-template-areas: "p_img p_head"
   "p_img p_desc"
-  "p_link p_desc"
+  "p_link p_link"
 }
 .p_img{
 grid-area:p_img ;
@@ -354,6 +369,7 @@ grid-area:p_img ;
     }
     .p_link{
       grid-area:p_link ;
+      justify-self:center;
       }
   .contact_link{
     background-color: white;
@@ -364,14 +380,35 @@ grid-area:p_img ;
     text-align:center;
     margin-bottom:1rem;
   }
+  @media only screen and (max-width:750px){
+    .projects{
+      height:150vh;
+      grid-template-columns: 0.1fr 1fr 0.1fr;
+      grid-template-rows:0.25fr 0.5fr 1fr 1fr 1fr 1fr 0.1fr;
+      grid-template-areas:". . ."
+      ".  h1 ."
+      ".  yatzy ."
+      ". quiz ."
+      ". acme ."
+      ". cv ."
+      ". . ."
+    }
+    .p_img{
+      max-width:100%;
+      height:auto;
+    }
+  }
+  @media only screen and (max-width:550px){
+    .projects{
+      height:160vh;
+      grid-template-columns: 1fr 1000fr 1fr;
+      grid-template-rows:0.5fr 0.25fr 1fr 1fr 1fr 1fr 0.1fr;
+     
+    }
+  }
+
  
-.skill_progress{
-    margin:10% 10% 0 10%;
-    max-height:70%;
-}
-.progress{
-  margin:5%;
-}
+
 .contact_page{
   margin-top:1%;
   color:$accent_color;
@@ -379,14 +416,16 @@ grid-area:p_img ;
   height:100vh;
   display:grid;
   grid-gap:1rem;
- 
+justify-content: center;
   grid-template-columns: 0.2fr 1fr 1fr 0.2fr;
-  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:". . . . "
   ". contact_head . .  "
   ". contact_form maps ."
   ". contact_form maps ."
   ". contact_form maps ."
+  ". contact_form  maps ."
+  ". contact_form  maps ."
   ". contact_form  maps ."
   ". . . . "  
   
@@ -396,18 +435,35 @@ grid-area:p_img ;
   grid-area:contact_head;
 }
 .contact_form{
+  max-width:50rem;
+  max-height:100%;
   background-color: white;
   color:black;
   padding-left:1rem;
   grid-area:contact_form;
+  display:flex;
+  flex-direction: column;
+
 }
 
 .maps{
   grid-area:maps;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
 }
+@media only screen and (max-width:700px){
+ .contact_page {
+   display:grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-template-columns:0.25fr 0.25fr 1fr 1fr;
+   grid-template-areas:". . ."
+   ". contact_head ."
+   ". contact_form ."
+   ". maps ."
+ }
 
-
-
+}
     .bottomNavigation{
       background-color: black;
       color:white;
@@ -439,7 +495,6 @@ grid-area:p_img ;
       }
   }
 
-/**/
 
 
 
