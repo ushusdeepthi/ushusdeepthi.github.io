@@ -27,85 +27,64 @@ body:before {
   box-sizing: border-box;
 }
 
-/*{
-    box-sizing: border-box;    
-}
-
-body{
-    background-image: url("../images/image.jpg");
-    padding:2%;
-    margin:2%;
-*/
-/*
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-body:before {
-    content: "";
-    position: absolute;
-    background: url("../images/image.jpg");
-    background-size: cover;
-    z-index: -1; /* Keep the background behind the content */
-/* height: 22.5%; width: 20%; /* Using Glen Maddern's trick /via @mente */
-/* don't forget to use the prefixes you need 
-    transform: scale(5);
-    transform-origin: top left;
-    filter: blur(1px);
-}*/
-* {
-  box-sizing: border-box;
-}
-
 .nav {
   display: flex;
   justify-content: space-between;
   padding: 0 2%;
+  background-color: black;
   color: bisque;
   position: sticky;
   top: 0px;
   z-index: 999;
+  /*end of nesting social*/
+  /*end of nesting links*/
 }
 
-.topNavigation {
+.nav .topNavigation {
   display: none;
 }
 
-.social {
+.nav .social {
   width: 20%;
   align-self: center;
 }
 
-.social i {
+.nav .social i {
   margin: 5%;
 }
 
-#links {
+.nav #links {
   width: 80%;
 }
 
-#links > * {
+.nav #links > * {
   margin: 2%;
 }
 
 @media screen and (max-width: 650px) {
-  #links {
+  .nav {
+    display: flex;
+    /*end of top navigation*/
+  }
+  .nav #links {
     display: none;
   }
-  .topNavigation {
+  .nav .topNavigation {
     display: block;
   }
-  .topNavigation {
+  .nav .topNavigation {
     display: flex;
     height: 12vh;
     position: relative;
-    background-color: black;
     justify-content: space-between;
     align-items: center;
     padding: 0;
     margin: 0;
     z-index: 2;
+    /*ending of menulist*/
+    /*end of nav nesting*/
   }
-  .menulist {
+  .nav .topNavigation .menulist {
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -117,9 +96,7 @@ body:before {
     margin-left: 60px;
     background-color: black;
   }
-  .menulist span,
-  .menulist span::before,
-  .menulist span::after {
+  .nav .topNavigation .menulist span, .nav .topNavigation .menulist span::before, .nav .topNavigation .menulist span::after {
     position: absolute;
     content: '';
     width: 30px;
@@ -128,31 +105,31 @@ body:before {
     background: white;
     transition: all 250ms ease-in-out;
   }
-  .menulist span::before {
+  .nav .topNavigation .menulist span::before {
     transform: translateY(-10px);
   }
-  .menulist span::after {
+  .nav .topNavigation .menulist span::after {
     transform: translateY(10px);
   }
-  .toggle-checkbox:checked ~ .menulist > span::after {
+  .nav .topNavigation .toggle-checkbox:checked ~ .menulist > span::after {
     transform: rotate(270deg) translateX(-1px) translateY(-1px);
   }
-  .toggle-checkbox:checked ~ .menulist > span {
+  .nav .topNavigation .toggle-checkbox:checked ~ .menulist > span {
     transform: rotate(45deg);
   }
-  .toggle-checkbox:checked ~ .menulist > span::before {
+  .nav .topNavigation .toggle-checkbox:checked ~ .menulist > span::before {
     transform: translateY(5px);
     opacity: 0;
   }
-  .toggle-checkbox:checked ~ nav {
+  .nav .topNavigation .toggle-checkbox:checked ~ nav {
     transform: translateY(-3vh);
     display: block;
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 6px 12px 0 rgba(0, 0, 0, 0.1);
   }
-  .toggle-checkbox {
+  .nav .topNavigation .toggle-checkbox {
     display: none;
   }
-  nav {
+  .nav .topNavigation nav {
     font-family: Arial, Helvetica, sans-serif;
     display: none;
     position: absolute;
@@ -165,35 +142,34 @@ body:before {
     transition: all 250ms ease-in-out;
     overflow: hidden;
     z-index: 9999;
+    /*end of ul nesting*/
   }
-  nav ul {
+  .nav .topNavigation nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    /*end of li nesting*/
   }
-  nav li {
+  .nav .topNavigation nav ul li {
     padding: 1em;
     font-weight: 700;
     background-color: #ffffff;
     border: solid 1px #f4f4f4;
   }
-  nav li:hover {
-    background-color: #67E3F4;
+  .nav .topNavigation nav ul li:hover {
+    background-color: bisque;
   }
-  nav li a {
+  .nav .topNavigation nav ul li a {
     text-decoration: none;
     color: #313131;
   }
-  .logo img {
-    height: 10vh;
-    margin-right: 30px;
-    max-height: 15vh;
-  }
-  .social {
+  .nav .social {
     width: 50%;
   }
+  /* */
 }
 
+/**/
 .wrapper {
   position: relative;
   color: bisque;
@@ -204,43 +180,43 @@ body:before {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: ". . . . . " ".  hi . . ." ". name name name ." ". education education education ." ". . . caption caption" ". . . . . ";
+  /*nesting wrapper starts*/
 }
 
-.nav {
-  background-color: black;
-  grid-area: nav;
-}
-
-.hi {
+.wrapper .hi {
   grid-area: hi;
 }
 
-.name {
+.wrapper .name {
   grid-area: name;
 }
 
-.education {
+.wrapper .education {
   grid-area: education;
 }
 
-.caption {
+.wrapper .caption {
   grid-area: caption;
 }
 
 @media only screen and (max-width: 650px) {
   .wrapper {
     grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: "nav nav nav" ".  hi ." ".  name ." "education education education" ". caption caption";
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr 1fr;
+    grid-template-areas: ". . ." ".  hi ." ".  name ." ". education ." ". caption .";
   }
-  .hi, .name, .eduction {
+  .wrapper .hi, .wrapper .name, .wrapper .eduction {
     text-align: center;
   }
-  .eduction {
-    text-align: right;
+  .wrapper .eduction {
+    align-self: center;
+  }
+  .wrapper .caption {
+    justify-self: end;
   }
 }
 
+/*nesting of warpper ends*/
 .grid_container {
   margin-top: 2%;
   color: bisque;
@@ -251,14 +227,17 @@ body:before {
   grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr 1fr;
   grid-template-rows: 0.5fr 1fr 0.25fr 1fr 1fr 1fr 1fr;
   grid-template-areas: ". . . . . . ." " . heading heading . . . .  " " . . details details details details . " " . image details details details details . " " . image details details details details . " ". .  details details details details . " ". . . . . . .";
+  /*start of nesting grid container*/
+  /*end of nesting .details*/
+  /*end of media queries*/
 }
 
-.heading {
+.grid_container .heading {
   font-size: 3rem;
   grid-area: heading;
 }
 
-#image {
+.grid_container #image {
   padding: 2rem;
   z-index: 10;
   max-width: 40vh;
@@ -267,42 +246,47 @@ body:before {
   border: 10px solid white;
 }
 
-.details {
+.grid_container .details {
   background-color: white;
   grid-area: details;
   color: #12343b;
   padding: 2rem;
+  text-align: center;
+  /*end of nesting skill_progress*/
 }
 
-.details button {
+.grid_container .details#details p {
+  text-align: left;
+}
+
+.grid_container .details button {
   margin: 1rem;
 }
 
+.grid_container .details .skill_progress {
+  margin: 10% 10% 0 10%;
+  max-height: 70%;
+}
+
+.grid_container .details .skill_progress .progress {
+  margin: 5%;
+}
+
 @media screen and (max-width: 850px) {
-  #image {
+  .grid_container #image {
     height: 30vh;
     padding: 0px;
     border: 0.5rem solid white;
   }
 }
 
-@media screen and (max-width: 600px) {
-  /*.grid_container{
-    grid-gap:0;
-    grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-rows:0.5fr 0.75fr  0.75fr 1fr;
-    grid-template-areas:". . ."
-    ".  heading ."
-    ".  image ."
-    ".  details ."
+@media screen and (max-width: 750px) {
+  .grid_container #details {
+    height: 65vh;
   }
-  #image{
-    height:20vh;
-    padding:0px;
-    align:
-    border:0.5rem solid white
-  }
-}*/
+}
+
+@media screen and (max-width: 650px) {
   .grid_container {
     display: flex;
     grid-gap: 0.1rem;
@@ -311,28 +295,29 @@ body:before {
     align-items: center;
     background-color: white;
   }
-  #image {
+  .grid_container #details {
+    height: 50vh;
+  }
+  .grid_container #image {
     height: 20vh;
     padding: 0px;
     align-self: auto;
     border: 0.5rem solid white;
   }
-  .heading {
+  .grid_container .heading {
     background-color: #12343b;
     align-self: stretch;
     text-align: center;
   }
 }
 
-.skill_progress {
-  margin: 10% 10% 0 10%;
-  max-height: 70%;
+@media screen and (max-width: 350px) {
+  .grid_container {
+    height: 130vh;
+  }
 }
 
-.progress {
-  margin: 5%;
-}
-
+/*end of nesting grid_container*/
 .projects {
   margin-top: 1%;
   color: bisque;
@@ -345,7 +330,7 @@ body:before {
   grid-template-areas: ". . . . . . . ." ". h1 h1 . . . . . " ". yatzy yatzy yatzy quiz quiz quiz ." ". yatzy yatzy yatzy quiz quiz quiz ." ". acme acme acme cv cv cv ." ". acme acme acme cv cv cv ." ". . . . . . . .";
 }
 
-.yatzy, .quiz, .acme, .cv {
+.projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
   background-color: white;
   color: black;
   border-radius: 5px;
@@ -356,28 +341,28 @@ body:before {
   height: auto;
 }
 
-h1 {
+.projects h1 {
   grid-area: h1;
   align-self: center;
 }
 
-.yatzy {
+.projects .yatzy {
   grid-area: yatzy;
 }
 
-.quiz {
+.projects .quiz {
   grid-area: quiz;
 }
 
-.acme {
+.projects .acme {
   grid-area: acme;
 }
 
-.cv {
+.projects .cv {
   grid-area: cv;
 }
 
-.yatzy, .quiz, .acme, .cv {
+.projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
   font-size: 0.75rem;
   display: grid;
   grid-gap: 0.2rem;
@@ -386,31 +371,21 @@ h1 {
   grid-template-areas: "p_img p_head" "p_img p_desc" "p_link p_link";
 }
 
-.p_img {
+.projects .p_img {
   grid-area: p_img;
 }
 
-.p_head {
+.projects .p_head {
   grid-area: p_head;
 }
 
-.p_desc {
+.projects .p_desc {
   grid-area: p_desc;
 }
 
-.p_link {
+.projects .p_link {
   grid-area: p_link;
   justify-self: center;
-}
-
-.contact_link {
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 1rem;
-  text-align: center;
-  margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 750px) {
@@ -420,7 +395,7 @@ h1 {
     grid-template-rows: 0.25fr 0.5fr 1fr 1fr 1fr 1fr 0.1fr;
     grid-template-areas: ". . ." ".  h1 ." ".  yatzy ." ". quiz ." ". acme ." ". cv ." ". . .";
   }
-  .p_img {
+  .projects .p_img {
     max-width: 100%;
     height: auto;
   }
@@ -434,6 +409,7 @@ h1 {
   }
 }
 
+/*end of nesting projects*/
 .contact_page {
   margin-top: 1%;
   color: bisque;
@@ -447,12 +423,12 @@ h1 {
   grid-template-areas: ". . . . " ". contact_head . .  " ". contact_form maps ." ". contact_form maps ." ". contact_form maps ." ". contact_form  maps ." ". contact_form  maps ." ". contact_form  maps ." ". . . . ";
 }
 
-.contact_head {
+.contact_page .contact_head {
   font-size: 2.5rem;
   grid-area: contact_head;
 }
 
-.contact_form {
+.contact_page .contact_form {
   max-width: 50rem;
   max-height: 100%;
   background-color: white;
@@ -463,19 +439,32 @@ h1 {
   flex-direction: column;
 }
 
-.maps {
+.contact_page .contact_form input, .contact_page .contact_form textarea {
+  width: 85%;
+}
+
+.contact_page .maps {
   grid-area: maps;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+.contact_page .contact_link {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 @media only screen and (max-width: 700px) {
   .contact_page {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-columns: 0.25fr 0.25fr 1fr 1fr;
-    grid-template-areas: ". . ." ". contact_head ." ". contact_form ." ". maps .";
+    height: 110vh;
+    grid-template-areas: ". . . . " ".  contact_head  . . " ". contact_form contact_form  . " ".  maps maps . ";
   }
 }
 

@@ -1,103 +1,89 @@
 @import'./variables';
 @import'./base';
 
-@import'./variables';
-@import'./base';
-
 .nav{
   display:flex;
   justify-content: space-between;
   padding: 0 2% ;
+  background-color: black;
   color:bisque;
   position:sticky;
   top:0px;
   z-index:999;
-}
   .topNavigation{
-  display:none;
+    display:none;
   }
-
   .social{
-  width:20%;
-   align-self: center;
-  }
-  .social i{
-  margin:5%;
-  }
+    width:20%;
+    align-self: center;
+    i{
+      margin:5%;
+    }
+  } /*end of nesting social*/
   #links{
-  width:80%;
-  }
-  #links> *{
-  margin:2%;
-  }
-
+    width:80%;
+    &> *{
+      margin:2%;
+    }
+  }/*end of nesting links*/
+}
 @media screen and (max-width:650px){
+.nav{
+  display:flex;
   #links{display:none;}
   .topNavigation{ display:block;}
   .topNavigation {
     display: flex;
     height: 12vh;
     position: relative;
-    background-color:black;
     justify-content: space-between;
     align-items: center;
     padding: 0;
     margin: 0;
-    z-index: 2;
-}
-
-.menulist {
-    position: relative;
-    display:flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 30px;
-    width: 30px;
-    z-index: 1;
-    cursor:pointer;
-    margin-left: 60px;
-    background-color:black;
-}
-
-.menulist span,
-.menulist span::before,
-.menulist span::after{
-    position: absolute;
-    content : '';
-    width: 30px;
-    height: 3px;
-    border-radius: 10px;
-    background:white;
-    transition: all 250ms ease-in-out;
-}
-
-.menulist span::before{
-    transform: translateY(-10px);
-}
-
-.menulist span::after{
-    transform: translateY(10px);
-}
-
-.toggle-checkbox:checked ~ .menulist>span::after {
+    z-index: 2;  
+    .menulist {
+      position: relative;
+      display:flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 30px;
+      width: 30px;
+      z-index: 1;
+      cursor:pointer;
+      margin-left: 60px;
+      background-color:black;
+      span,span::before,span::after{
+        position: absolute;
+        content : '';
+        width: 30px;
+        height: 3px;
+        border-radius: 10px;
+        background:white;
+        transition: all 250ms ease-in-out;
+      }
+      span::before{
+        transform: translateY(-10px);
+      }
+     span::after{
+        transform: translateY(10px);
+      }  
+    }/*ending of menulist*/
+  
+  .toggle-checkbox:checked ~ .menulist>span::after {
     transform: rotate(270deg) translateX(-1px)translateY(-1px);
-}
-
-.toggle-checkbox:checked ~ .menulist>span {
+  }
+  .toggle-checkbox:checked ~  .menulist>span {
     transform: rotate(45deg) ;
-}
-
-.toggle-checkbox:checked ~ .menulist>span::before{
+  }
+  .toggle-checkbox:checked ~  .menulist>span::before{
     transform: translateY(5px);
     opacity: 0;
-}
-
-.toggle-checkbox:checked ~ nav{
+  }
+  .toggle-checkbox:checked ~ nav{
     transform: translateY(-3vh);
     display: block;
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 6px 12px 0 rgba(0, 0, 0, 0.1);
-}
-
+  }
 .toggle-checkbox {
     display: none;
 }
@@ -115,39 +101,38 @@ nav {
     transition: all 250ms ease-in-out;
     overflow: hidden;
     z-index: 9999;
-}
 
-nav ul{
+
+ul{
     list-style: none;
     margin: 0;
 
     padding: 0;
-}
 
-nav li {
+
+ li {
     padding: 1em;
     font-weight: 700;
     background-color: #ffffff;
     border: solid 1px #f4f4f4;
-  }
+  
 
-nav li:hover{
-    background-color: #67E3F4;
+ &:hover{
+    background-color: bisque;
 }
-nav li a{
+  a{
     text-decoration: none;
     color: #313131;
 }
-
-.logo img{
-    height: 10vh;
-    margin-right: 30px;
-    max-height: 15vh;
-}
+ }/*end of li nesting*/
+}/*end of ul nesting*/
+}/*end of nav nesting*/
+}/*end of top navigation*/
 .social {
   width:50%;
 }
-}
+}/* */
+}/**/
 
 .wrapper{
   position:relative;
@@ -164,50 +149,43 @@ nav li a{
   ". name name name ."
   ". education education education ."
   ". . . caption caption"
-  ". . . . . "  
-  
-}
-
-.nav{
-    background-color: black;
-    grid-area: nav;
-} 
+  ". . . . . ";
+/*nesting wrapper starts*/
 .hi{
- 
   grid-area: hi;
 } 
 .name{
-  
   grid-area: name;
 } 
 .education{
- 
   grid-area: education;
 } 
 .caption{
- 
   grid-area: caption;
 } 
 
 @media only screen and (max-width:650px){
-  .wrapper{
+  &{
     grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-rows:0.5fr 1fr 1fr 1fr 1fr ;
-    grid-template-areas:"nav nav nav"
+    grid-template-rows:0.5fr 0.5fr 0.5fr 1fr 1fr ;
+    
+    grid-template-areas:". . ."
     ".  hi ."
     ".  name ."
-    "education education education"
-    ". caption caption"
+    ". education ."
+    ". caption ."
   }
   .hi, .name, .eduction{
     text-align:center;
   }
   .eduction{
-    text-align:right;
+    align-self: center;
   }
-
+  .caption{
+    justify-self:end;
+  }
 }
-
+}/*nesting of warpper ends*/
 .grid_container{
   margin-top:2%;
   color:$accent_color;
@@ -223,8 +201,8 @@ nav li a{
   " . image details details details details . "
   " . image details details details details . "
   ". .  details details details details . "
-  ". . . . . . ."
-}
+  ". . . . . . .";
+/*start of nesting grid container*/
 
 .heading{
    font-size: 3rem;
@@ -245,44 +223,51 @@ nav li a{
 .details {
   background-color: white;
   grid-area:details;
+ 
   color:$color-background;
   padding:2rem;
-} 
-.details button{
+  text-align:center;
+ &#details p{
+   text-align:left;
+ } 
+
+ button{
   margin:1rem ;
-}
-@media  screen and (max-width:850px){
   
+}
+.skill_progress{
+  margin:10% 10% 0 10%;
+  max-height:70%;
+
+.progress{
+margin:5%;
+}
+}/*end of nesting skill_progress*/
+} /*end of nesting .details*/
+@media  screen and (max-width:850px){
   #image{
     height:30vh;
     padding:0px;
     border:0.5rem solid white;
-  }
+  }  
 }
-@media  screen and (max-width:600px){
-  /*.grid_container{
-    grid-gap:0;
-    grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-rows:0.5fr 0.75fr  0.75fr 1fr;
-    grid-template-areas:". . ."
-    ".  heading ."
-    ".  image ."
-    ".  details ."
-  }
-  #image{
-    height:20vh;
-    padding:0px;
-    align:
-    border:0.5rem solid white
-  }
-}*/
-.grid_container{
+@media  screen and (max-width:750px){
+   #details{
+     height:65vh;
+   }
+}
+@media  screen and (max-width:650px){
+&{
+ 
   display:flex;
   grid-gap:0.1rem;
   flex-direction:column;
   max-height:200vh;
   align-items:center;
   background-color: white;
+}
+#details{
+  height:50vh;
 }
  #image{
 height:20vh;
@@ -296,14 +281,14 @@ border:0.5rem solid white;
   align-self:stretch;
   text-align:center;
 }
+}/*end of media queries*/
+@media  screen and (max-width:350px){
+&{
+  height:130vh;
 }
-.skill_progress{
-  margin:10% 10% 0 10%;
-  max-height:70%;
 }
-.progress{
-margin:5%;
-}
+}/*end of nesting grid_container*/
+
 
 .projects{
  margin-top:1%;
@@ -320,15 +305,15 @@ margin:5%;
   ". yatzy yatzy yatzy quiz quiz quiz ."
   ". acme acme acme cv cv cv ."
   ". acme acme acme cv cv cv ."
-  ". . . . . . . ."  
+  ". . . . . . . .";  
   
-}
+
 .yatzy,.quiz,.acme,.cv{
   background-color: white;
   color:black;
   border-radius:5px;
 }
-.projects img{
+ img{
   max-width: 20vh;
   height:auto;
 }
@@ -371,17 +356,9 @@ grid-area:p_img ;
       grid-area:p_link ;
       justify-self:center;
       }
-  .contact_link{
-    background-color: white;
-    color:black;
-    border:1px solid black;
-    border-radius:5px;
-    padding:1rem;
-    text-align:center;
-    margin-bottom:1rem;
-  }
+  
   @media only screen and (max-width:750px){
-    .projects{
+    &{
       height:150vh;
       grid-template-columns: 0.1fr 1fr 0.1fr;
       grid-template-rows:0.25fr 0.5fr 1fr 1fr 1fr 1fr 0.1fr;
@@ -399,14 +376,14 @@ grid-area:p_img ;
     }
   }
   @media only screen and (max-width:550px){
-    .projects{
+    &{
       height:160vh;
       grid-template-columns: 1fr 1000fr 1fr;
       grid-template-rows:0.5fr 0.25fr 1fr 1fr 1fr 1fr 0.1fr;
      
     }
   }
-
+}/*end of nesting projects*/
  
 
 .contact_page{
@@ -416,7 +393,7 @@ grid-area:p_img ;
   height:100vh;
   display:grid;
   grid-gap:1rem;
-justify-content: center;
+  justify-content: center;
   grid-template-columns: 0.2fr 1fr 1fr 0.2fr;
   grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:". . . . "
@@ -427,9 +404,7 @@ justify-content: center;
   ". contact_form  maps ."
   ". contact_form  maps ."
   ". contact_form  maps ."
-  ". . . . "  
-  
-}
+  ". . . . " ;
 .contact_head{
   font-size: 2.5rem;
   grid-area:contact_head;
@@ -443,7 +418,11 @@ justify-content: center;
   grid-area:contact_form;
   display:flex;
   flex-direction: column;
-
+  input,textarea{
+    width:85%;
+    
+  }
+ 
 }
 
 .maps{
@@ -452,17 +431,26 @@ justify-content: center;
   flex-direction:column;
   justify-content: center;
 }
+.contact_link{
+  background-color: white;
+  color:black;
+  border:1px solid black;
+  border-radius:5px;
+  padding:1rem;
+  text-align:center;
+  margin-bottom:1rem;
+}
 @media only screen and (max-width:700px){
- .contact_page {
+ & {
    display:grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   grid-template-columns:0.25fr 0.25fr 1fr 1fr;
-   grid-template-areas:". . ."
-   ". contact_head ."
-   ". contact_form ."
-   ". maps ."
+   height:110vh;
+   grid-template-areas:". . . . "
+   ".  contact_head  . . "
+   ". contact_form contact_form  . "
+   ".  maps maps . ";
  }
 
+}
 }
     .bottomNavigation{
       background-color: black;
