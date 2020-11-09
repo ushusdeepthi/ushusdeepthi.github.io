@@ -175,12 +175,37 @@ body:before {
   color: bisque;
   background-color: #12343b;
   height: 100vh;
+  max-height: 100vh;
   display: grid;
   grid-gap: 0.2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: ". . . . . " ".  hi . . ." ". name name name ." ". education education education ." ". . . caption caption" ". . . . . ";
   /*nesting wrapper starts*/
+  /*
+.hi, .name, .education, .caption{
+  width:100%;
+overflow:hidden;
+animation:animate 2s linear forwards;
+  span{
+    color:bisque;
+  }
+}
+@keyframes animate {
+  0%{
+    width:0px;
+    height:0px;
+  }
+  30% { 
+    width: 50px; 
+    height: 0px; 
+} 
+60% { 
+    width: 50px; 
+    height: 80px; 
+} 
+
+}*/
 }
 
 .wrapper .hi {
@@ -216,19 +241,58 @@ body:before {
   }
 }
 
+.wrapper .hi {
+  animation-delay: 1s;
+}
+
+.wrapper .name {
+  animation-delay: 2s;
+}
+
+.wrapper .education {
+  animation-delay: 3s;
+}
+
+.wrapper .caption {
+  animation-delay: 4s;
+}
+
+.wrapper .hi, .wrapper .name, .wrapper .education, .wrapper .caption {
+  width: 100%;
+  overflow: hidden;
+  animation: animate 2s linear forwards;
+}
+
+@keyframes animate {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  30% {
+    width: 50px;
+    height: 0px;
+  }
+  60% {
+    width: 50px;
+    height: 80px;
+  }
+}
+
 /*nesting of warpper ends*/
+/*end of mixin container*/
 .grid_container {
+  height: 100%;
+  max-height: 200vh;
   margin-top: 2%;
   color: bisque;
   background-color: #12343b;
-  height: 100vh;
   display: grid;
   grid-gap: 0.5rem;
   grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr 1fr;
-  grid-template-rows: 0.5fr 1fr 0.25fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: ". . . . . . ." " . heading heading . . . .  " " . . details details details details . " " . image details details details details . " " . image details details details details . " ". .  details details details details . " ". . . . . . .";
-  /*start of nesting grid container*/
+  grid-template-rows: 0.5fr 0.25fr 0.25fr 1fr 1fr 1fr 0.5fr 0.5fr;
+  grid-template-areas: ". . . . . . ." " . heading heading . . . .  " " . . details details details details . " " . image details details details details . " " . image details details details details . " ". .  details details details details . " ". . select select select select ." ". . . . . . .";
   /*end of nesting .details*/
+  /*end of nesting .select*/
   /*end of media queries*/
 }
 
@@ -238,9 +302,10 @@ body:before {
 }
 
 .grid_container #image {
-  padding: 2rem;
+  border-radius: 50%;
+  padding: 1%;
   z-index: 10;
-  max-width: 40vh;
+  width: 100%;
   height: auto;
   grid-area: image;
   border: 10px solid white;
@@ -249,57 +314,47 @@ body:before {
 .grid_container .details {
   background-color: white;
   grid-area: details;
+  height: 100%;
   color: #12343b;
   padding: 2rem;
   text-align: center;
-  /*end of nesting skill_progress*/
 }
 
-.grid_container .details#details p {
+.grid_container .details.details p {
   text-align: left;
 }
 
-.grid_container .details button {
+.grid_container .select {
+  grid-area: select;
+  text-align: center;
+}
+
+.grid_container .select button {
   margin: 1rem;
 }
 
-.grid_container .details .skill_progress {
-  margin: 10% 10% 0 10%;
-  max-height: 70%;
-}
-
-.grid_container .details .skill_progress .progress {
-  margin: 5%;
-}
-
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 900px) {
+  .grid_container .details {
+    height: 100%;
+  }
   .grid_container #image {
-    height: 30vh;
     padding: 0px;
     border: 0.5rem solid white;
   }
 }
 
-@media screen and (max-width: 750px) {
-  .grid_container #details {
-    height: 65vh;
-  }
-}
-
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 768px) {
   .grid_container {
     display: flex;
     grid-gap: 0.1rem;
     flex-direction: column;
-    max-height: 200vh;
+    height: 110vh;
     align-items: center;
     background-color: white;
   }
-  .grid_container #details {
-    height: 50vh;
-  }
   .grid_container #image {
-    height: 20vh;
+    width: 30%;
+    height: auto;
     padding: 0px;
     align-self: auto;
     border: 0.5rem solid white;
@@ -311,18 +366,36 @@ body:before {
   }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 450px) {
   .grid_container {
-    height: 130vh;
+    height: 100%;
   }
 }
 
-/*end of nesting grid_container*/
+@media screen and (max-width: 350px) {
+  .grid_container {
+    height: 100%;
+  }
+}
+
+/*end of nesting grid_container        to here*/
+/*@media  screen and(max-width:1024px) and (min-width:900px) and (aspect-ratio:4/3){
+  .grid_container{
+    height:100vh;
+      .details{
+        height:75vh;}
+        #img{
+          
+        }
+      }
+
+}*/
 .projects {
   margin-top: 1%;
   color: bisque;
   background-color: #12343b;
-  height: 100vh;
+  height: 100%;
+  max-height: 400vh;
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 0.25fr;
@@ -337,7 +410,8 @@ body:before {
 }
 
 .projects img {
-  max-width: 20vh;
+  width: 100%;
+  max-width: 70vh;
   height: auto;
 }
 
@@ -366,13 +440,17 @@ body:before {
   font-size: 0.75rem;
   display: grid;
   grid-gap: 0.2rem;
-  grid-template-columns: 0.5fr 1fr;
+  grid-template-columns: 0.75fr 1fr;
   grid-template-rows: 0.1fr 1fr 0.5fr;
-  grid-template-areas: "p_img p_head" "p_img p_desc" "p_link p_link";
+  grid-template-areas: "p_img p_head" "p_img p_desc" "p_img p_link";
 }
 
 .projects .p_img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
   grid-area: p_img;
+  border-radius: 5px;
 }
 
 .projects .p_head {
@@ -388,24 +466,51 @@ body:before {
   justify-self: center;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 950px) {
   .projects {
-    height: 150vh;
-    grid-template-columns: 0.1fr 1fr 0.1fr;
-    grid-template-rows: 0.25fr 0.5fr 1fr 1fr 1fr 1fr 0.1fr;
-    grid-template-areas: ". . ." ".  h1 ." ".  yatzy ." ". quiz ." ". acme ." ". cv ." ". . .";
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .projects .p_img {
-    max-width: 100%;
+  .projects h1 {
+    margin-top: 5rem;
+  }
+  .projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
+    width: 60%;
     height: auto;
+  }
+  .projects .yatzy .p_img, .projects .quiz .p_img, .projects .acme .p_img, .projects .cv .p_img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
+    width: 70%;
   }
 }
 
 @media only screen and (max-width: 550px) {
-  .projects {
-    height: 160vh;
-    grid-template-columns: 1fr 1000fr 1fr;
-    grid-template-rows: 0.5fr 0.25fr 1fr 1fr 1fr 1fr 0.1fr;
+  .projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    padding-bottom: 3rem;
+  }
+  .projects .yatzy .p_img, .projects .quiz .p_img, .projects .acme .p_img, .projects .cv .p_img {
+    width: 100%;
+  }
+  .projects .yatzy .p_desc, .projects .quiz .p_desc, .projects .acme .p_desc, .projects .cv .p_desc {
+    padding: 0 2rem;
   }
 }
 
@@ -419,7 +524,7 @@ body:before {
   grid-gap: 1rem;
   justify-content: center;
   grid-template-columns: 0.2fr 1fr 1fr 0.2fr;
-  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: ". . . . " ". contact_head . .  " ". contact_form maps ." ". contact_form maps ." ". contact_form maps ." ". contact_form  maps ." ". contact_form  maps ." ". contact_form  maps ." ". . . . ";
 }
 
@@ -430,7 +535,7 @@ body:before {
 
 .contact_page .contact_form {
   max-width: 50rem;
-  max-height: 100%;
+  max-height: 90%;
   background-color: white;
   color: black;
   padding-left: 1rem;
@@ -463,8 +568,20 @@ body:before {
 @media only screen and (max-width: 700px) {
   .contact_page {
     display: grid;
-    height: 110vh;
+    height: 130vh;
     grid-template-areas: ". . . . " ".  contact_head  . . " ". contact_form contact_form  . " ".  maps maps . ";
+  }
+  .contact_page .contact_form {
+    max-height: 100%;
+  }
+  .contact_page .contact_form .submit {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .contact_page {
+    height: 150vh;
   }
 }
 
@@ -498,6 +615,85 @@ body:before {
     margin: 0px auto;
     display: flex;
     justify-content: space-around;
+  }
+}
+
+#skills {
+  height: 100vh;
+  margin-top: 2%;
+  color: bisque;
+  background-color: #12343b;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr 1fr;
+  grid-template-rows: 0.5fr 0.25fr 0.25fr 1fr 1fr 1fr 0.5fr 0.5fr;
+  grid-template-areas: ". . . . . . ." " . heading heading . . . .  " " . . details details details details . " " . image details details details details . " " . image details details details details . " ". .  details details details details . " ". . select select select select ." ". . . . . . .";
+  /*end of nesting .details*/
+  /*end of media queries*/
+}
+
+#skills .heading {
+  font-size: 3rem;
+  grid-area: heading;
+}
+
+#skills #image {
+  border-radius: 50%;
+  padding: 1%;
+  z-index: 10;
+  width: 100%;
+  height: auto;
+  grid-area: image;
+  border: 10px solid white;
+}
+
+#skills .details {
+  background-color: white;
+  grid-area: details;
+  color: #12343b;
+  padding: 2rem;
+  /*end of nesting skill_progress*/
+}
+
+#skills .details .skill_progress {
+  margin: 10% 10% 0 10%;
+  max-height: 70%;
+}
+
+#skills .details .skill_progress .progress {
+  margin: 5%;
+}
+
+@media screen and (max-width: 850px) {
+  #skills #image {
+    height: 30vh;
+    padding: 0px;
+    border: 0.5rem solid white;
+  }
+  #skills .details {
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #skills {
+    display: flex;
+    grid-gap: 0.1rem;
+    flex-direction: column;
+    max-height: 100vh;
+    align-items: center;
+    background-color: white;
+  }
+  #skills #image {
+    height: 20vh;
+    padding: 0px;
+    align-self: auto;
+    border: 0.5rem solid white;
+  }
+  #skills .heading {
+    background-color: #12343b;
+    align-self: stretch;
+    text-align: center;
   }
 }
 /*# sourceMappingURL=cv.css.map */
