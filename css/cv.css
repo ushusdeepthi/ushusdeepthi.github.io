@@ -27,6 +27,8 @@ body:before {
   box-sizing: border-box;
 }
 
+/* end of mixin animation*/
+/*end of mixin container*/
 .nav {
   display: flex;
   justify-content: space-between;
@@ -104,6 +106,7 @@ body:before {
     border-radius: 10px;
     background: white;
     transition: all 250ms ease-in-out;
+    /*including mixin transition*/
   }
   .nav .topNavigation .menulist span::before {
     transform: translateY(-10px);
@@ -153,7 +156,7 @@ body:before {
   .nav .topNavigation nav ul li {
     padding: 0.5em;
     font-weight: 700;
-    background-color: #12343b;
+    background-color: #001016;
     border: solid 1px #f4f4f4;
   }
   .nav .topNavigation nav ul li:hover {
@@ -161,7 +164,7 @@ body:before {
   }
   .nav .topNavigation nav ul li a {
     text-decoration: none;
-    color: #313131;
+    color: black;
   }
   .nav .social {
     width: 50%;
@@ -184,30 +187,7 @@ body:before {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: ". . . . . " ".  hi . . ." ". name name name ." ". education education education education" ". . . caption caption" ". . . . . ";
   /*nesting wrapper starts*/
-  /*
-.hi, .name, .education, .caption{
-  width:100%;
-overflow:hidden;
-animation:animate 2s linear forwards;
-  span{
-    color:bisque;
-  }
-}
-@keyframes animate {
-  0%{
-    width:0px;
-    height:0px;
-  }
-  30% { 
-    width: 50px; 
-    height: 0px; 
-} 
-60% { 
-    width: 50px; 
-    height: 80px; 
-} 
-
-}*/
+  /*animation included from mixin*/
 }
 
 .wrapper .hi {
@@ -281,13 +261,12 @@ animation:animate 2s linear forwards;
 }
 
 /*nesting of warpper ends*/
-/*end of mixin container*/
 .grid_container {
   height: 100%;
   max-height: 200vh;
   margin-top: 2%;
   color: bisque;
-  background-color: #12343b;
+  background-color: #001016;
   display: grid;
   grid-gap: 0.5rem;
   grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr 1fr;
@@ -318,7 +297,7 @@ animation:animate 2s linear forwards;
   height: 100%;
   background-color: white;
   grid-area: details;
-  color: #12343b;
+  color: #001016;
 }
 
 .grid_container #image {
@@ -355,7 +334,7 @@ animation:animate 2s linear forwards;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   .grid_container {
     display: flex;
     grid-gap: 0.1rem;
@@ -373,16 +352,16 @@ animation:animate 2s linear forwards;
     padding: 1%;
     height: auto;
     align-self: auto;
-    border: 0.5rem solid #12343b;
+    border: 0.5rem solid #001016;
   }
   .grid_container .heading {
-    background-color: #12343b;
+    background-color: #001016;
     align-self: stretch;
     text-align: center;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media only screen and (max-width: 450px) {
   .grid_container {
     height: 100%;
   }
@@ -394,16 +373,16 @@ animation:animate 2s linear forwards;
   }
 }
 
-/*end of nesting grid_container        to here*/
+/*end of nesting grid_container*/
 .projects {
   margin-top: 1%;
   color: bisque;
-  background-color: #12343b;
+  background-color: #001016;
   height: 100%;
   max-height: 400vh;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 0.25fr;
+  grid-template-columns: 0.25fr 1fr 1fr 1fr 1fr 1fr 1fr 0.025fr;
   grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: ". . . . . . . ." ". h1 h1 . . . . . " ". yatzy yatzy yatzy quiz quiz quiz ." ". yatzy yatzy yatzy quiz quiz quiz ." ". acme acme acme cv cv cv ." ". acme acme acme cv cv cv ." ". . . . . . . .";
 }
@@ -471,7 +450,7 @@ animation:animate 2s linear forwards;
   justify-self: center;
 }
 
-@media only screen and (max-width: 950px) {
+@media screen and (max-width: 900px) {
   .projects {
     padding-bottom: 3rem;
     display: flex;
@@ -503,7 +482,7 @@ animation:animate 2s linear forwards;
   }
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 450px) {
   .projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
     display: flex;
     flex-direction: column;
@@ -525,7 +504,7 @@ animation:animate 2s linear forwards;
   max-height: 100vh;
   margin-top: 2%;
   color: bisque;
-  background-color: #12343b;
+  background-color: #001016;
   display: grid;
   grid-gap: 0.5rem;
   grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr 1fr;
@@ -555,7 +534,7 @@ animation:animate 2s linear forwards;
   height: 100%;
   background-color: white;
   grid-area: details;
-  color: #12343b;
+  color: #001016;
 }
 
 #skills .details {
@@ -598,7 +577,7 @@ animation:animate 2s linear forwards;
     border: 0.5rem solid white;
   }
   #skills .heading {
-    background-color: #12343b;
+    background-color: #001016;
     align-self: stretch;
     text-align: center;
   }
@@ -607,7 +586,7 @@ animation:animate 2s linear forwards;
 .contact_page {
   margin-top: 1%;
   color: bisque;
-  background-color: #12343b;
+  background-color: #001016;
   height: 100vh;
   display: grid;
   grid-gap: 1rem;
@@ -665,10 +644,8 @@ animation:animate 2s linear forwards;
 
 @media only screen and (max-width: 700px) {
   .contact_page {
-    /*display:flex;
-   flex-direction:column;*/
     display: grid;
-    height: 135vh;
+    height: 130vh;
     grid-template-areas: ". . . . " ".  contact_head  . . " ". contact_form contact_form  . " ".  maps maps . ";
   }
   .contact_page .contact_form {

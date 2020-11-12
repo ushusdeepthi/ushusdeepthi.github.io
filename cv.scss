@@ -1,12 +1,14 @@
 @import'./variables';
 @import'./base';
+@import'./mixin';
+
 
 .nav{
   display:flex;
   justify-content: space-between;
   padding: 0 2% ;
   background-color: black;
-  color:bisque;
+  color:$text-color;
   position:sticky;
   top:0px;
   z-index:999;
@@ -51,15 +53,15 @@
       z-index: 1;
       cursor:pointer;
       margin-left: 60px;
-      background-color:black;
+      background-color:$extra-color;
       span,span::before,span::after{
         position: absolute;
         content : '';
         width: 30px;
         height: 3px;
         border-radius: 10px;
-        background:white;
-        transition: all 250ms ease-in-out;
+        background:$border-color;
+        @include transition(all 250ms ease-in-out);/*including mixin transition*/
       }
       span::before{
         transform: translateY(-10px);
@@ -98,7 +100,7 @@ nav {
     font-size: 1.5em;
     transform: translateY(-3vh);
     border-radius: 10px;
-    transition: all 250ms ease-in-out;
+    @include transition(all 250ms ease-in-out);
     overflow: hidden;
     z-index: 9999;
 ul{
@@ -119,7 +121,7 @@ ul{
 }
   a{
     text-decoration: none;
-    color: #313131;
+    color: $extra-color;
 }
  }/*end of li nesting*/
 }/*end of ul nesting*/
@@ -137,7 +139,7 @@ ul{
   
   background-size:100% 100%;
   position:relative;
-  color:$accent_color;
+  color:$text_color;
  
   height:100vh;
   max-height:100vh;
@@ -187,26 +189,7 @@ ul{
     justify-self:end;
   }
 }
-@mixin animation{
-  .hi, .name, .education, .caption{
-    width:100%;
-  overflow:hidden;
-  animation:animate 2s linear forwards;}
-  @keyframes animate {
-    0%{
-      width:0px;
-      height:0px;
-    }
-    30% { 
-      width: 50%; 
-      height: 0px; 
-  } 
-  60% { 
-      width: 100%; 
-      height: 80px; 
-  } 
-  }
-}
+
 .hi{
 animation-delay: 1s;
 }
@@ -219,80 +202,14 @@ animation-delay: 1s;
 .caption{
   animation-delay: 4s;
 }
-@include animation;/*
-.hi, .name, .education, .caption{
-  width:100%;
-overflow:hidden;
-animation:animate 2s linear forwards;
-  span{
-    color:bisque;
-  }
-}
-@keyframes animate {
-  0%{
-    width:0px;
-    height:0px;
-  }
-  30% { 
-    width: 50px; 
-    height: 0px; 
-} 
-60% { 
-    width: 50px; 
-    height: 80px; 
-} 
-
-}*/
+@include animation;/*animation included from mixin*/
 }/*nesting of warpper ends*/
 
-@mixin container {
-  margin-top:2%;
-  color:$accent_color;
-  background-color: $color-background;
-  display:grid;
- grid-gap:0.5rem;
-  grid-template-columns:1fr 1fr 2fr 1fr 2fr 1fr 1fr;
-  grid-template-rows: 0.5fr 0.25fr 0.25fr 1fr 1fr 1fr 0.5fr 0.5fr;
-  grid-template-areas:". . . . . . ."
-  " . heading heading . . . .  "
-  " . . details details details details . "
-  " . image details details details details . "
-  " . image details details details details . "
-  ". .  details details details details . "
-  ". . select select select select ."
-  ". . . . . . .";
-  .heading{
-    font-size: 3rem;
-     grid-area: heading;
-    
- } 
- #image{
-  text-align:center;
-  width:150%;
- align-self:end;
-  height:auto;
-   
-   padding:1%;
-   z-index: 10;
-   grid-area: image;
-   border:10px solid white;
-   
- } 
- .details{
-   height:100%;
-   background-color: white;
-  grid-area:details;
-  color:$color-background;
- }
-  
-}/*end of mixin container*/
 
 .grid_container{
-
   height:100%;
   max-height:200vh;
-  
-@include container;
+  @include container;
   #image{
     border-radius:50%;
 }
@@ -312,7 +229,7 @@ animation:animate 2s linear forwards;
   margin:1rem ;
 }
 }/*end of nesting .select*/                                                    
-@media  screen and (max-width:900px){                            
+  @include bp-large{                            
   .details{
     height:100%;
     
@@ -325,21 +242,21 @@ animation:animate 2s linear forwards;
   }  
 }
 
-@media  screen and (max-width:768px){
+  @include bp-medium{
 &{
   display:flex;
   grid-gap:0.1rem;
   flex-direction:column;
  height:auto;
   align-items:center;
-  background-color: white;
+  background-color: $border-color;
 }
 .details  h4{
   text-align:center;
 }
 
  #image{
-  background-color:white ;
+  background-color:$border-color;
 width:30%;
 padding:1%;
 height:auto;
@@ -355,7 +272,7 @@ border:0.5rem solid $color-background;
 }
 }/*end of media queries*/
 
-@media  screen and (max-width:450px){
+@include bp-small{
   &{
     height:100%;
   }
@@ -367,17 +284,17 @@ border:0.5rem solid $color-background;
 }
 
 }
-}/*end of nesting grid_container        to here*/ 
+}/*end of nesting grid_container*/ 
 
 .projects{
  margin-top:1%;
-  color:$accent_color;
+  color:$text-color;
   background-color: $color-background;
   height:100%;
   max-height:400vh;
   display:grid;
   grid-gap:2rem;
-  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 0.25fr;
+  grid-template-columns: 0.25fr 1fr 1fr 1fr 1fr 1fr 1fr 0.025fr;
   grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:". . . . . . . ."
   ". h1 h1 . . . . . "
@@ -389,8 +306,8 @@ border:0.5rem solid $color-background;
   
 
 .yatzy,.quiz,.acme,.cv{
-  background-color: white;
-  color:black;
+  background-color: $border-color;
+  color:$extra-color;
   border-radius:5px;
 }
  img{
@@ -443,7 +360,7 @@ border-radius:5px;
       justify-self:center;
       }
   
-  @media only screen and (max-width:950px){
+      @include bp-large{
     &{
     padding-bottom:3rem;
     display:flex;
@@ -462,7 +379,7 @@ border-radius:5px;
       }
   }
 }
-@media only screen and (max-width:768px){
+@include bp-medium{
     .yatzy,.quiz,.acme,.cv{
       width:70%;
   }
@@ -473,7 +390,7 @@ border-radius:5px;
   }
   
 }
-@media only screen and (max-width:420px){
+@include bp-small{
   .yatzy,.quiz,.acme,.cv{
     display:flex;
     flex-direction: column;
@@ -506,7 +423,7 @@ margin:5%;
 }
 }/*end of nesting skill_progress*/
 } /*end of nesting .details*/
-@media  screen and (max-width:900px){
+@include bp-large{
   
   #image{
     width:180%;
@@ -523,14 +440,14 @@ margin:5%;
   flex-direction:column;
   max-height:100vh;
   align-items:center;
-  background-color: white;
+  background-color: $border-color;
 }
  #image{
 width:30%;
 height:auto;
 padding:0px;
 align-self:auto;
-border:0.5rem solid white;
+border:0.5rem solid $border-color;
 
 }
 .heading{
@@ -543,7 +460,7 @@ border:0.5rem solid white;
 
 .contact_page{
   margin-top:1%;
-  color:$accent_color;
+  color:$text-color;
   background-color: $color-background;
   height:100vh;
   display:grid;
@@ -568,8 +485,8 @@ border:0.5rem solid white;
   grid-area:contact_form;
   max-width:50rem;
   max-height:100%;
-  background-color: white;
-  color:black;
+  background-color: $border-color;
+  color:$extra-color;
   padding-left:2rem;
   border-radius:5px;
   display:flex;
@@ -592,9 +509,9 @@ border:0.5rem solid white;
   justify-content: center;
 }
 .contact_link{
-  background-color: white;
-  color:black;
-  border:1px solid black;
+  background-color:$border-color;
+  color:$extra-color;
+  border:1px solid $extra-color;
   border-radius:5px;
   padding:1rem;
   text-align:center;
@@ -602,10 +519,8 @@ border:0.5rem solid white;
 }
 @media only screen and (max-width:700px){
  & {
-   /*display:flex;
-   flex-direction:column;*/
    display:grid;
-   height:135vh;
+   height:130vh;
    grid-template-areas:". . . . "
    ".  contact_head  . . "
    ". contact_form contact_form  . "
