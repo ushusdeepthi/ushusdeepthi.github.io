@@ -92,8 +92,8 @@ nav {
     font-family: Arial, Helvetica, sans-serif;
     display: none;
     position: absolute;
-    top: 14vh;
-    left: 2vw;
+    top: 12vh;
+    left: 1vw;
     width: 200px;
     font-size: 1.5em;
     transform: translateY(-3vh);
@@ -108,9 +108,9 @@ ul{
 
 
  li {
-    padding: 1em;
+    padding: 0.5em;
     font-weight: 700;
-    background-color: #ffffff;
+    background-color:$color-background;
     border: solid 1px #f4f4f4;
   
 
@@ -132,9 +132,13 @@ ul{
 }/**/
 
 .wrapper{
+  background-image:url("../images/background2.jpg") ;
+  background-repeat: no-repeat;
+  
+  background-size:100% 100%;
   position:relative;
   color:$accent_color;
-  background-color: $color-background;
+ 
   height:100vh;
   max-height:100vh;
   display:grid;
@@ -145,7 +149,7 @@ ul{
 ". . . . . "
   ".  hi . . ."
   ". name name name ."
-  ". education education education ."
+  ". education education education education"
   ". . . caption caption"
   ". . . . . ";
 /*nesting wrapper starts*/
@@ -170,7 +174,7 @@ ul{
     grid-template-areas:". . ."
     ".  hi ."
     ".  name ."
-    ". education ."
+    ". education education"
     ". caption ."
   }
   .hi, .name, .eduction{
@@ -194,11 +198,11 @@ ul{
       height:0px;
     }
     30% { 
-      width: 50px; 
+      width: 50%; 
       height: 0px; 
   } 
   60% { 
-      width: 50px; 
+      width: 100%; 
       height: 80px; 
   } 
   }
@@ -263,33 +267,43 @@ animation:animate 2s linear forwards;
     
  } 
  #image{
-   border-radius:50%;
+  text-align:center;
+  width:150%;
+ align-self:end;
+  height:auto;
+   
    padding:1%;
    z-index: 10;
- width:100%;
-  height:auto;
    grid-area: image;
    border:10px solid white;
    
  } 
+ .details{
+   height:100%;
+   background-color: white;
+  grid-area:details;
+  color:$color-background;
+ }
   
 }/*end of mixin container*/
 
 .grid_container{
+
   height:100%;
   max-height:200vh;
- 
+  
 @include container;
+  #image{
+    border-radius:50%;
+}
 .details {
-  background-color: white;
-  grid-area:details;
-  height:100%;
-  color:$color-background;
   padding:2rem;
-  text-align:center;
- &.details p{
+  
+  p{
+   padding-left:2rem;
    text-align:left;
  } 
+
 } /*end of nesting .details*/
 .select{
   grid-area:select;
@@ -301,9 +315,12 @@ animation:animate 2s linear forwards;
 @media  screen and (max-width:900px){                            
   .details{
     height:100%;
+    
   }
   #image{
     padding:0px;
+    width:180%;
+    align-self:center;
     border:0.5rem solid white;
   }  
 }
@@ -313,17 +330,22 @@ animation:animate 2s linear forwards;
   display:flex;
   grid-gap:0.1rem;
   flex-direction:column;
- height:110vh;
+ height:auto;
   align-items:center;
   background-color: white;
 }
+.details  h4{
+  text-align:center;
+}
 
  #image{
+  background-color:white ;
 width:30%;
+padding:1%;
 height:auto;
-padding:0px;
+
 align-self:auto;
-border:0.5rem solid white;
+border:0.5rem solid $color-background;
 
 }
 .heading{
@@ -332,11 +354,11 @@ border:0.5rem solid white;
   text-align:center;
 }
 }/*end of media queries*/
+
 @media  screen and (max-width:450px){
   &{
     height:100%;
   }
-
   }
 @media  screen and (max-width:350px){
 &{
@@ -346,20 +368,6 @@ border:0.5rem solid white;
 
 }
 }/*end of nesting grid_container        to here*/ 
-
-/*@media  screen and(max-width:1024px) and (min-width:900px) and (aspect-ratio:4/3){
-  .grid_container{
-    height:100vh;
-      .details{
-        height:75vh;}
-        #img{
-          
-        }
-      }
-
-}*/
-
-
 
 .projects{
  margin-top:1%;
@@ -437,7 +445,6 @@ border-radius:5px;
   
   @media only screen and (max-width:950px){
     &{
-    
     padding-bottom:3rem;
     display:flex;
     flex-direction: column;
@@ -483,7 +490,56 @@ border-radius:5px;
 
 }
 }/*end of nesting projects*/
+#skills{
+  height:100%; 
+  max-height:100vh;
+@include container;
+
+.details {
+  padding:2rem;
+.skill_progress{
+  margin:10% 10% 0 10%;
+  max-height:70%;
+
+.progress{
+margin:5%;
+}
+}/*end of nesting skill_progress*/
+} /*end of nesting .details*/
+@media  screen and (max-width:900px){
+  
+  #image{
+    width:180%;
+    height:auto;
+    align-self:center;
+    border:0.5rem solid white;
+  }
  
+}
+@media  screen and (max-width:600px){
+&{
+  display:flex;
+  grid-gap:0.1rem;
+  flex-direction:column;
+  max-height:100vh;
+  align-items:center;
+  background-color: white;
+}
+ #image{
+width:30%;
+height:auto;
+padding:0px;
+align-self:auto;
+border:0.5rem solid white;
+
+}
+.heading{
+  background-color: $color-background;
+  align-self:stretch;
+  text-align:center;
+}
+}/*end of media queries*/
+}
 
 .contact_page{
   margin-top:1%;
@@ -509,21 +565,26 @@ border-radius:5px;
   grid-area:contact_head;
 }
 .contact_form{
+  grid-area:contact_form;
   max-width:50rem;
-  max-height:90%;
+  max-height:100%;
   background-color: white;
   color:black;
-  padding-left:1rem;
-  grid-area:contact_form;
+  padding-left:2rem;
+  border-radius:5px;
   display:flex;
   flex-direction: column;
   input,textarea{
     width:85%;
     
+  } 
+  .get_in_touch{
+    margin-top:1rem;
   }
- 
+  .submit{
+    margin:1rem 0;
+  }
 }
-
 .maps{
   grid-area:maps;
   display:flex;
@@ -541,8 +602,10 @@ border-radius:5px;
 }
 @media only screen and (max-width:700px){
  & {
+   /*display:flex;
+   flex-direction:column;*/
    display:grid;
-   height:130vh;
+   height:135vh;
    grid-template-areas:". . . . "
    ".  contact_head  . . "
    ". contact_form contact_form  . "
@@ -561,7 +624,6 @@ border-radius:5px;
 }
 }
 }
-
     .bottomNavigation{
       background-color: black;
       color:white;
@@ -591,58 +653,4 @@ border-radius:5px;
           display:flex;
           justify-content: space-around;
       }
-  }
-  #skills{
-   
-    height:100vh;
-    
-    
-  @include container;
-  .details {
-    background-color: white;
-    grid-area:details;
-    color:$color-background;
-    padding:2rem;
-  .skill_progress{
-    margin:10% 10% 0 10%;
-    max-height:70%;
-  
-  .progress{
-  margin:5%;
-  }
-  }/*end of nesting skill_progress*/
-  } /*end of nesting .details*/
-  @media  screen and (max-width:850px){
-    
-    #image{
-      height:30vh;
-      padding:0px;
-      border:0.5rem solid white;
-    }
-    .details{
-      height:50vh;
-    }
-  }
-  @media  screen and (max-width:600px){
-  &{
-    display:flex;
-    grid-gap:0.1rem;
-    flex-direction:column;
-    max-height:100vh;
-    align-items:center;
-    background-color: white;
-  }
-   #image{
-  height:20vh;
-  padding:0px;
-  align-self:auto;
-  border:0.5rem solid white;
-  
-  }
-  .heading{
-    background-color: $color-background;
-    align-self:stretch;
-    text-align:center;
-  }
-  }/*end of media queries*/
   }

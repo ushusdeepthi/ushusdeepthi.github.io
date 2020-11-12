@@ -133,8 +133,8 @@ body:before {
     font-family: Arial, Helvetica, sans-serif;
     display: none;
     position: absolute;
-    top: 14vh;
-    left: 2vw;
+    top: 12vh;
+    left: 1vw;
     width: 200px;
     font-size: 1.5em;
     transform: translateY(-3vh);
@@ -151,9 +151,9 @@ body:before {
     /*end of li nesting*/
   }
   .nav .topNavigation nav ul li {
-    padding: 1em;
+    padding: 0.5em;
     font-weight: 700;
-    background-color: #ffffff;
+    background-color: #12343b;
     border: solid 1px #f4f4f4;
   }
   .nav .topNavigation nav ul li:hover {
@@ -171,16 +171,18 @@ body:before {
 
 /**/
 .wrapper {
+  background-image: url("../images/background2.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   position: relative;
   color: bisque;
-  background-color: #12343b;
   height: 100vh;
   max-height: 100vh;
   display: grid;
   grid-gap: 0.2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: ". . . . . " ".  hi . . ." ". name name name ." ". education education education ." ". . . caption caption" ". . . . . ";
+  grid-template-areas: ". . . . . " ".  hi . . ." ". name name name ." ". education education education education" ". . . caption caption" ". . . . . ";
   /*nesting wrapper starts*/
   /*
 .hi, .name, .education, .caption{
@@ -228,7 +230,7 @@ animation:animate 2s linear forwards;
   .wrapper {
     grid-template-columns: 0.2fr 1fr 0.2fr;
     grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr 1fr;
-    grid-template-areas: ". . ." ".  hi ." ".  name ." ". education ." ". caption .";
+    grid-template-areas: ". . ." ".  hi ." ".  name ." ". education education" ". caption .";
   }
   .wrapper .hi, .wrapper .name, .wrapper .eduction {
     text-align: center;
@@ -269,11 +271,11 @@ animation:animate 2s linear forwards;
     height: 0px;
   }
   30% {
-    width: 50px;
+    width: 50%;
     height: 0px;
   }
   60% {
-    width: 50px;
+    width: 100%;
     height: 80px;
   }
 }
@@ -302,25 +304,33 @@ animation:animate 2s linear forwards;
 }
 
 .grid_container #image {
-  border-radius: 50%;
+  text-align: center;
+  width: 150%;
+  align-self: end;
+  height: auto;
   padding: 1%;
   z-index: 10;
-  width: 100%;
-  height: auto;
   grid-area: image;
   border: 10px solid white;
 }
 
 .grid_container .details {
+  height: 100%;
   background-color: white;
   grid-area: details;
-  height: 100%;
   color: #12343b;
-  padding: 2rem;
-  text-align: center;
 }
 
-.grid_container .details.details p {
+.grid_container #image {
+  border-radius: 50%;
+}
+
+.grid_container .details {
+  padding: 2rem;
+}
+
+.grid_container .details p {
+  padding-left: 2rem;
   text-align: left;
 }
 
@@ -339,6 +349,8 @@ animation:animate 2s linear forwards;
   }
   .grid_container #image {
     padding: 0px;
+    width: 180%;
+    align-self: center;
     border: 0.5rem solid white;
   }
 }
@@ -348,16 +360,20 @@ animation:animate 2s linear forwards;
     display: flex;
     grid-gap: 0.1rem;
     flex-direction: column;
-    height: 110vh;
+    height: auto;
     align-items: center;
     background-color: white;
   }
+  .grid_container .details h4 {
+    text-align: center;
+  }
   .grid_container #image {
+    background-color: white;
     width: 30%;
+    padding: 1%;
     height: auto;
-    padding: 0px;
     align-self: auto;
-    border: 0.5rem solid white;
+    border: 0.5rem solid #12343b;
   }
   .grid_container .heading {
     background-color: #12343b;
@@ -379,17 +395,6 @@ animation:animate 2s linear forwards;
 }
 
 /*end of nesting grid_container        to here*/
-/*@media  screen and(max-width:1024px) and (min-width:900px) and (aspect-ratio:4/3){
-  .grid_container{
-    height:100vh;
-      .details{
-        height:75vh;}
-        #img{
-          
-        }
-      }
-
-}*/
 .projects {
   margin-top: 1%;
   color: bisque;
@@ -515,6 +520,90 @@ animation:animate 2s linear forwards;
 }
 
 /*end of nesting projects*/
+#skills {
+  height: 100%;
+  max-height: 100vh;
+  margin-top: 2%;
+  color: bisque;
+  background-color: #12343b;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr 1fr;
+  grid-template-rows: 0.5fr 0.25fr 0.25fr 1fr 1fr 1fr 0.5fr 0.5fr;
+  grid-template-areas: ". . . . . . ." " . heading heading . . . .  " " . . details details details details . " " . image details details details details . " " . image details details details details . " ". .  details details details details . " ". . select select select select ." ". . . . . . .";
+  /*end of nesting .details*/
+  /*end of media queries*/
+}
+
+#skills .heading {
+  font-size: 3rem;
+  grid-area: heading;
+}
+
+#skills #image {
+  text-align: center;
+  width: 150%;
+  align-self: end;
+  height: auto;
+  padding: 1%;
+  z-index: 10;
+  grid-area: image;
+  border: 10px solid white;
+}
+
+#skills .details {
+  height: 100%;
+  background-color: white;
+  grid-area: details;
+  color: #12343b;
+}
+
+#skills .details {
+  padding: 2rem;
+  /*end of nesting skill_progress*/
+}
+
+#skills .details .skill_progress {
+  margin: 10% 10% 0 10%;
+  max-height: 70%;
+}
+
+#skills .details .skill_progress .progress {
+  margin: 5%;
+}
+
+@media screen and (max-width: 900px) {
+  #skills #image {
+    width: 180%;
+    height: auto;
+    align-self: center;
+    border: 0.5rem solid white;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #skills {
+    display: flex;
+    grid-gap: 0.1rem;
+    flex-direction: column;
+    max-height: 100vh;
+    align-items: center;
+    background-color: white;
+  }
+  #skills #image {
+    width: 30%;
+    height: auto;
+    padding: 0px;
+    align-self: auto;
+    border: 0.5rem solid white;
+  }
+  #skills .heading {
+    background-color: #12343b;
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
 .contact_page {
   margin-top: 1%;
   color: bisque;
@@ -534,18 +623,27 @@ animation:animate 2s linear forwards;
 }
 
 .contact_page .contact_form {
+  grid-area: contact_form;
   max-width: 50rem;
-  max-height: 90%;
+  max-height: 100%;
   background-color: white;
   color: black;
-  padding-left: 1rem;
-  grid-area: contact_form;
+  padding-left: 2rem;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
 }
 
 .contact_page .contact_form input, .contact_page .contact_form textarea {
   width: 85%;
+}
+
+.contact_page .contact_form .get_in_touch {
+  margin-top: 1rem;
+}
+
+.contact_page .contact_form .submit {
+  margin: 1rem 0;
 }
 
 .contact_page .maps {
@@ -567,8 +665,10 @@ animation:animate 2s linear forwards;
 
 @media only screen and (max-width: 700px) {
   .contact_page {
+    /*display:flex;
+   flex-direction:column;*/
     display: grid;
-    height: 130vh;
+    height: 135vh;
     grid-template-areas: ". . . . " ".  contact_head  . . " ". contact_form contact_form  . " ".  maps maps . ";
   }
   .contact_page .contact_form {
@@ -615,85 +715,6 @@ animation:animate 2s linear forwards;
     margin: 0px auto;
     display: flex;
     justify-content: space-around;
-  }
-}
-
-#skills {
-  height: 100vh;
-  margin-top: 2%;
-  color: bisque;
-  background-color: #12343b;
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr 1fr;
-  grid-template-rows: 0.5fr 0.25fr 0.25fr 1fr 1fr 1fr 0.5fr 0.5fr;
-  grid-template-areas: ". . . . . . ." " . heading heading . . . .  " " . . details details details details . " " . image details details details details . " " . image details details details details . " ". .  details details details details . " ". . select select select select ." ". . . . . . .";
-  /*end of nesting .details*/
-  /*end of media queries*/
-}
-
-#skills .heading {
-  font-size: 3rem;
-  grid-area: heading;
-}
-
-#skills #image {
-  border-radius: 50%;
-  padding: 1%;
-  z-index: 10;
-  width: 100%;
-  height: auto;
-  grid-area: image;
-  border: 10px solid white;
-}
-
-#skills .details {
-  background-color: white;
-  grid-area: details;
-  color: #12343b;
-  padding: 2rem;
-  /*end of nesting skill_progress*/
-}
-
-#skills .details .skill_progress {
-  margin: 10% 10% 0 10%;
-  max-height: 70%;
-}
-
-#skills .details .skill_progress .progress {
-  margin: 5%;
-}
-
-@media screen and (max-width: 850px) {
-  #skills #image {
-    height: 30vh;
-    padding: 0px;
-    border: 0.5rem solid white;
-  }
-  #skills .details {
-    height: 50vh;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  #skills {
-    display: flex;
-    grid-gap: 0.1rem;
-    flex-direction: column;
-    max-height: 100vh;
-    align-items: center;
-    background-color: white;
-  }
-  #skills #image {
-    height: 20vh;
-    padding: 0px;
-    align-self: auto;
-    border: 0.5rem solid white;
-  }
-  #skills .heading {
-    background-color: #12343b;
-    align-self: stretch;
-    text-align: center;
   }
 }
 /*# sourceMappingURL=cv.css.map */
