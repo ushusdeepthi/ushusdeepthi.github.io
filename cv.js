@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     })
     course.addEventListener("click",(e)=>{
-       document.getElementById("image").src="./images/nackademin.png"
+       document.getElementById("pic").src="./images/nackademin.png"
        let me_heading= document.getElementById("me_head");
        me_heading.remove();
         let about=document.getElementById("about_desc");
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         course_head.setAttribute("lang","sv");
         course_head.textContent="Webbutvecklare fullstack opensource";
         let course_desc=document.createElement("p");
-        course_desc.textContent="The course provides competance in both frontend and back end webdevelopement with, programming language like javascript & PHP along with HTML, CSS and javascript libraries. It is a more updated and practical course and prepare students with most recent technologies and make them ready for a existing market. The education includes: Javascript programming, frameworks and libraries,backend developement, Webdevelopement with CMS & PHP,construction and test automation and version management(git).The highlight of the course is two periods of interships during the two year span of the course ";
+        course_desc.textContent="The course provides competance in both frontend and back end webdevelopement with, programming language like javascript & PHP, HTML, CSS and javascript libraries. It is a more updated and practical course and prepare students with most recent technologies and make them ready for a existing market. The education includes: JS programming, frameworks and libraries,backend, Webdevelopement with CMS&PHP,construction and test automation and version management(git).The highlight of the course is two interships during the two year span of the course ";
         
         details.appendChild(course_head);  
         course_head.after(course_desc);
@@ -49,4 +49,3 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
     
 })
-

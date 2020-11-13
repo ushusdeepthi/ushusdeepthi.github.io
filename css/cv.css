@@ -1,15 +1,23 @@
 /*importing partial variable file*/
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700&subset=latin,latin-ext);
 * {
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Slab', serif;
 }
 
 /*importing partial base file*/
 /* end of mixin animation*/
 /*end of mixin container*/
-/*mixin for vendor prefixes*/
 /*importing patial mixin file*/
 /*start nav bar*/
 .nav {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  -moz-display: flex;
   display: flex;
   justify-content: space-between;
   padding: 0 2%;
