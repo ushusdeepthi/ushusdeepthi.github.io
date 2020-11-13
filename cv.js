@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded",()=>{
     let me=document.getElementById("me");
+    let details=document.getElementById("details");
     let course=document.getElementById("course");
     me.addEventListener("click",(e)=>{
         window.location.reload();
@@ -7,13 +8,20 @@ document.addEventListener("DOMContentLoaded",()=>{
     })
     course.addEventListener("click",(e)=>{
        document.getElementById("image").src="./images/nackademin.png"
+       let me_heading= document.getElementById("me_head");
+       me_heading.remove();
         let about=document.getElementById("about_desc");
         about.remove();
         e.target.setAttribute("disabled","true");
+        let course_head=document.createElement("h4");
+        course_head.setAttribute("lang","sv");
+        course_head.textContent="Webbutvecklare fullstack opensource";
         let course_desc=document.createElement("p");
-        course_desc.setAttribute("lang","sv");
-        course_desc.textContent="Webbutvecklare fullstack opensource";
-        me.before(course_desc);  
+        course_desc.textContent="The course provides competance in both frontend and back end webdevelopement with, programming language like javascript & PHP along with HTML, CSS and javascript libraries. It is a more updated and practical course and prepare students with most recent technologies and make them ready for a existing market. The education includes: Javascript programming, frameworks and libraries,backend developement, Webdevelopement with CMS & PHP,construction and test automation and version management(git).The highlight of the course is two periods of interships during the two year span of the course ";
+        
+        details.appendChild(course_head);  
+        course_head.after(course_desc);
+       
     })
     let submit=document.getElementById("submit");
     submit.addEventListener("click",(e)=>{
@@ -38,5 +46,7 @@ document.addEventListener("DOMContentLoaded",()=>{
             alert("Enter valid characters in the name/subject input");
             return false;
         }
-    }   
+    }
+    
 })
+

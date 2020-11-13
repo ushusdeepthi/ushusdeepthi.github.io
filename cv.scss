@@ -1,12 +1,15 @@
-@import'./variables';
-@import'./base';
-@import'./mixin';
-
-
+@import'./variables'; /*importing partial variable file*/
+@import'./base';      /*importing partial base file*/
+@import'./mixin';     /*importing patial mixin file*/
+*{
+  @include prefix(box-sizing,border-box);
+}
+/*start nav bar*/
 .nav{
+  @include prefix('display','flex');
   display:flex;
   justify-content: space-between;
-  padding: 0 2% ;
+  padding: 0 2%;
   background-color: black;
   color:$text-color;
   position:sticky;
@@ -28,12 +31,16 @@
       margin:2%;
     }
   }/*end of nesting links*/
-}
-@media screen and (max-width:650px){
-.nav{
-  display:flex;
-  #links{display:none;}
-  .topNavigation{ display:block;}
+}/*end of nesting nav bar*/
+  @media screen and (max-width:650px){/*menu appearing after if screen width<650px*/
+  .nav{
+    display:flex;
+  #links{
+    display:none;
+  }
+  .topNavigation{ 
+    display:block;
+  }
   .topNavigation {
     display: flex;
     height: 12vh;
@@ -69,225 +76,201 @@
      span::after{
         transform: translateY(10px);
       }  
-    }/*ending of menulist*/
-  
-  .toggle-checkbox:checked ~ .menulist>span::after {
-    transform: rotate(270deg) translateX(-1px)translateY(-1px);
+    }/*ending of menulist nesting*/
+    .toggle-checkbox:checked ~ .menulist>span::after {
+      transform: rotate(270deg) translateX(-1px)translateY(-1px);
+    }
+    .toggle-checkbox:checked ~  .menulist>span {
+      transform: rotate(45deg) ;
+    }
+    .toggle-checkbox:checked ~  .menulist>span::before{
+      transform: translateY(5px);
+      opacity: 0;
+    }
+    .toggle-checkbox:checked ~ nav{
+      transform: translateY(-3vh);
+      display: block;
+      box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 6px 12px 0 rgba(0, 0, 0, 0.1);
+    }
+    .toggle-checkbox {
+      display: none;
+    }
+    nav {
+      font-family: Arial, Helvetica, sans-serif;
+      display: none;
+      position: absolute;
+      top: 12vh;
+      left: 1vw;
+      width: 200px;
+      font-size: 1.5em;
+      transform: translateY(-3vh);
+      border-radius: 10px;
+      @include transition(all 250ms ease-in-out);
+      overflow: hidden;
+      z-index: 9999;
+      ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          padding: 0.5em;
+          font-weight: 700;
+          background-color:$color-background;
+          border: solid 1px #f4f4f4;
+          &:hover{
+            background-color: rgb(56, 2, 40);
+          }
+          a{
+            text-decoration: none;
+            color: $text-color;
+          }
+        }/*end of li nesting*/
+      }/*end of ul nesting*/
+    }/*end of nav nesting*/
+  }/*end of top navigation*/
+  .social {
+    width:50%;
   }
-  .toggle-checkbox:checked ~  .menulist>span {
-    transform: rotate(45deg) ;
-  }
-  .toggle-checkbox:checked ~  .menulist>span::before{
-    transform: translateY(5px);
-    opacity: 0;
-  }
-  .toggle-checkbox:checked ~ nav{
-    transform: translateY(-3vh);
-    display: block;
-    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 6px 12px 0 rgba(0, 0, 0, 0.1);
-  }
-.toggle-checkbox {
-    display: none;
-}
-
-nav {
-    font-family: Arial, Helvetica, sans-serif;
-    display: none;
-    position: absolute;
-    top: 12vh;
-    left: 1vw;
-    width: 200px;
-    font-size: 1.5em;
-    transform: translateY(-3vh);
-    border-radius: 10px;
-    @include transition(all 250ms ease-in-out);
-    overflow: hidden;
-    z-index: 9999;
-ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-
- li {
-    padding: 0.5em;
-    font-weight: 700;
-    background-color:$color-background;
-    border: solid 1px #f4f4f4;
-  
-
- &:hover{
-    background-color: bisque;
-}
-  a{
-    text-decoration: none;
-    color: $extra-color;
-}
- }/*end of li nesting*/
-}/*end of ul nesting*/
-}/*end of nav nesting*/
-}/*end of top navigation*/
-.social {
-  width:50%;
-}
-}/* */
-}/**/
+  }/*end of medi queries */
+}/*end of div nav nesting*/
 
 .wrapper{
   background-image:url("../images/background3.jpg") ;
   background-repeat: no-repeat;
-  
   background-size:100% 100%;
   position:relative;
   color:$text_color;
- 
   height:100vh;
   max-height:100vh;
   display:grid;
   grid-gap:0.2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows:  1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-". . . . . "
+  grid-template-areas:  ". . . . . "
   ".  hi . . ."
   ". name name name ."
   ". education education education education"
   ". . . caption caption"
   ". . . . . ";
-/*nesting wrapper starts*/
-.hi{
-  grid-area: hi;
-} 
-.name{
-  grid-area: name;
-} 
-.education{
-  grid-area: education;
-} 
-.caption{
-  grid-area: caption;
-} 
-
-@media only screen and (max-width:650px){
-  &{
-    grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-rows:0.5fr 0.5fr 0.5fr 1fr 1fr ;
-    
-    grid-template-areas:". . ."
-    ".  hi ."
-    ".  name ."
-    ". education education"
-    ". caption ."
+  /*nesting wrapper starts*/
+  .hi{
+    grid-area: hi;
+  } 
+  .name{
+    grid-area: name;
+  } 
+  .education{
+    grid-area: education;
+  } 
+  .caption{
+    grid-area: caption;
+  } 
+  @media only screen and (max-width:650px){
+    &{
+      grid-template-columns: 0.2fr 1fr 0.2fr;
+      grid-template-rows:0.5fr 0.5fr 0.5fr 1fr 1fr ;
+      grid-template-areas:". . ."
+      ".  hi ."
+      ".  name ."
+      ". education education"
+      ". caption ."
+    }
+    .hi, .name, .eduction{
+      text-align:center;
+    }
+    .eduction{
+      align-self: center;
+    }
+    .caption{
+      justify-self:end;
+    }
+  }/*end of media queries*/
+  .hi{
+  animation-delay: 1s;
   }
-  .hi, .name, .eduction{
-    text-align:center;
+  .name{
+    animation-delay: 2s;
   }
-  .eduction{
-    align-self: center;
+  .education{
+    animation-delay: 3s;
   }
   .caption{
-    justify-self:end;
+    animation-delay: 4s;
   }
-}
-
-.hi{
-animation-delay: 1s;
-}
-.name{
-  animation-delay: 2s;
-}
-.education{
-  animation-delay: 3s;
-}
-.caption{
-  animation-delay: 4s;
-}
-@include animation;/*animation included from mixin*/
+  @include animation;/*animation included from mixin*/
 }/*nesting of warpper ends*/
-
-
+/*grid container for about page starts*/
 .grid_container{
   height:100%;
   max-height:200vh;
   @include container;
-  #image{
-    border-radius:50%;
-}
-.details {
-  padding:2rem;
-  
-  p{
-   padding-left:2rem;
-   text-align:left;
- } 
-
-} /*end of nesting .details*/
-.select{
-  grid-area:select;
-  text-align:center;
- button{
-  margin:1rem ;
-}
-}/*end of nesting .select*/                                                    
+    .image{
+      border-radius:50%;
+    }
+    .details {
+      padding:2rem;
+      p{
+        padding-left:2rem;
+        text-align:left;
+      } 
+    } /*end of nesting .details*/
+    .select{
+      grid-area:select;
+      text-align:center;
+        button{
+          margin:1rem ;
+        }
+    }/*end of nesting .select*/                                                    
   @include bp-large{                            
-  .details{
-    height:100%;
-    
-  }
-  #image{
-    padding:0px;
-    width:180%;
-    align-self:center;
-    border:0.5rem solid white;
-  }  
-}
-
+    .details{
+      height:100%;
+    }
+    .image{
+      padding:0px;
+      width:180%;
+      align-self:center;
+      border:0.5rem solid white;
+    }  
+  }/*end of a mixin bp-large*/
   @include bp-medium{
-&{
-  display:flex;
-  grid-gap:0.1rem;
-  flex-direction:column;
- height:auto;
-  align-items:center;
-  background-color: $border-color;
-}
-.details  h4{
-  text-align:center;
-}
-
- #image{
-  background-color:$border-color;
-width:30%;
-padding:1%;
-height:auto;
-
-align-self:auto;
-border:0.5rem solid $color-background;
-
-}
-.heading{
-  background-color: $color-background;
-  align-self:stretch;
-  text-align:center;
-}
-}/*end of media queries*/
-
-@include bp-small{
-  &{
-    height:100%;
-  }
-  }
-@media  screen and (max-width:350px){
-&{
-  height:100%;
-  
-}
-
-}
+    &{
+      display:flex;
+      grid-gap:0.1rem;
+      flex-direction:column;
+      height:auto;
+      align-items:center;
+      background-color: $border-color;
+    }
+    .details  h4{
+      text-align:center;
+    }
+    .image{
+      background-color:$border-color;
+      width:30%;
+      padding:1%;
+      height:auto;
+      align-self:auto;
+      border:0.5rem solid $color-background;
+    }
+    .heading{
+      background-color: $color-background;
+      align-self:stretch;
+      text-align:center;
+    }
+  }/*end of mixin bp medium*/
+  @include bp-small{
+    &{
+      height:100%;
+    }
+  }/*end of mixin bp small*/
+  @media  screen and (max-width:350px){
+    &{
+      height:100%;
+    }
+  }/*end of media queries*/
 }/*end of nesting grid_container*/ 
-
 .projects{
- margin-top:1%;
+  margin-top:1%;
   color:$text-color;
   background-color: $color-background;
   height:100%;
@@ -303,73 +286,70 @@ border:0.5rem solid $color-background;
   ". acme acme acme cv cv cv ."
   ". acme acme acme cv cv cv ."
   ". . . . . . . .";  
-  
-
-.yatzy,.quiz,.acme,.cv{
-  background-color: $border-color;
-  color:$extra-color;
-  border-radius:5px;
-}
- img{
-   width:100%;
-  max-width: 70vh;
-  height:auto;
-}
-h1{
-  grid-area: h1;
-  align-self:center;
-}
-.yatzy{
-  grid-area:yatzy;
-}
-.quiz{
-  grid-area:quiz;
-}
-.acme{
-  grid-area:acme;
-}
-.cv{
-  grid-area:cv;
-}
-.yatzy,.quiz,.acme,.cv{
-  font-size:0.75rem;
-  display:grid;
-  grid-gap:0.2rem;
-  grid-template-columns:0.75fr 1fr;
-  grid-template-rows: 0.1fr 1fr 0.5fr;
-  grid-template-areas: "p_img p_head"
-  "p_img p_desc"
-  "p_img p_link"
-}
-.p_img{
-height:100%;
-width:auto;
-max-width:100%;
- 
-grid-area:p_img;
-border-radius:5px;
-}
-.p_head{
-  grid-area:p_head ;
+  h1{
+    grid-area: h1;
+    align-self:center;
   }
-  .p_desc{
-    grid-area:p_desc ;
+  .yatzy{
+    grid-area:yatzy;
+  }
+  .quiz{
+    grid-area:quiz;
+  }
+  .acme{
+    grid-area:acme;
+  }
+  .cv{
+    grid-area:cv;
+  }
+  .yatzy,.quiz,.acme,.cv{
+    background-color: $border-color;
+    color:$extra-color;
+    border-radius:5px;
+    font-size:0.75rem;
+    display:grid;
+    grid-gap:0.2rem;
+    grid-template-columns:0.75fr 1fr;
+    grid-template-rows: 0.1fr 1fr 0.5fr;
+    grid-template-areas: "p_img p_head"
+    "p_img p_desc"
+    "p_img p_link";
+    .p_img{
+      height:100%;
+      width:auto;
+      max-width:100%;
+      grid-area:p_img;
+      border-radius:5px;
+    }
+    .p_head{
+      grid-area:p_head ;
+    }
+    .p_desc{
+      grid-area:p_desc ;
     }
     .p_link{
       grid-area:p_link ;
       justify-self:center;
-      }
-  
-      @include bp-large{
-    &{
-    padding-bottom:3rem;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    h1{
-      margin-top:5rem;
+      border:2px solid black;
+      border-radius:5px;
+      background-color:$color-background;
+      color:$text-color;
+      width:7rem;
+      padding:0.5rem;
+      margin-bottom:0.5rem;
+      text-align:center;
     }
-  }
+  } /*end nesting yatzy,quiz acme,cv*/
+  @include bp-large{
+    &{
+      padding-bottom:3rem;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      h1{
+        margin-top:5rem;
+      }
+    }
     .yatzy,.quiz,.acme,.cv{
       width:60%;
       height:auto;
@@ -377,87 +357,79 @@ border-radius:5px;
         height:100%;
         width:auto  
       }
+    }
   }
-}
-@include bp-medium{
+  @include bp-medium{
     .yatzy,.quiz,.acme,.cv{
       width:70%;
+    }
   }
-}
   @media only screen and (max-width:550px){
     .yatzy,.quiz,.acme,.cv{
       width:90%;
+    }
   }
-  
-}
-@include bp-small{
-  .yatzy,.quiz,.acme,.cv{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    width:80%;
-    padding-bottom:3rem;
-    .p_img{
-      width:100%;
+  @include bp-small{
+    .yatzy,.quiz,.acme,.cv{
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      width:80%;
+      padding-bottom:3rem;
+      .p_img{
+        width:100%;
+      }
+      .p_desc{
+        padding:0 2rem;
+      }
     }
-    .p_desc{
-      padding:0 2rem;
-    }
-}
-
-}
+  }
 }/*end of nesting projects*/
 #skills{
   height:100%; 
   max-height:100vh;
-@include container;
-
-.details {
-  padding:2rem;
-.skill_progress{
-  margin:10% 10% 0 10%;
-  max-height:70%;
-
-.progress{
-margin:5%;
-}
-}/*end of nesting skill_progress*/
-} /*end of nesting .details*/
-@include bp-large{
-  
-  #image{
-    width:180%;
-    height:auto;
-    align-self:center;
-    border:0.5rem solid white;
+  @include container;
+  .details {
+    padding:2rem;
+    .skill_progress{
+      margin:10% 10% 0 10%;
+      max-height:70%;
+      .progress{
+        margin:5%;
+      }
+    }/*end of nesting skill_progress*/
+  } /*end of nesting .details*/
+  @include bp-large{
+    .image{
+      width:180%;
+      height:auto;
+      align-self:center;
+      border:0.5rem solid white;
+    } 
   }
- 
-}
-@media  screen and (max-width:600px){
-&{
-  display:flex;
-  grid-gap:0.1rem;
-  flex-direction:column;
-  max-height:100vh;
-  align-items:center;
-  background-color: $border-color;
-}
- #image{
-width:30%;
-height:auto;
-padding:0px;
-align-self:auto;
-border:0.5rem solid $border-color;
-
-}
-.heading{
-  background-color: $color-background;
-  align-self:stretch;
-  text-align:center;
-}
-}/*end of media queries*/
-}
-
+  @media  screen and (max-width:600px){
+    &{
+      display:flex;
+      grid-gap:0.1rem;
+      flex-direction:column;
+      max-height:100vh;
+      align-items:center;
+      background-color: $border-color;
+    }
+    .image{
+      width:30%;  
+      height:auto;
+      padding:0px;
+      align-self:auto;
+      border:0.5rem solid $border-color;    
+    }
+    .heading{
+      background-color: $color-background;
+      align-self:stretch;
+      text-align:center;
+    }
+  }/*end of media queries*/
+}/*end of skills page*/
 .contact_page{
   margin-top:1%;
   color:$text-color;
@@ -467,7 +439,7 @@ border:0.5rem solid $border-color;
   grid-gap:1rem;
   justify-content: center;
   grid-template-columns: 0.2fr 1fr 1fr 0.2fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 0.25fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
   grid-template-areas:". . . . "
   ". contact_head . .  "
   ". contact_form maps ."
@@ -477,95 +449,91 @@ border:0.5rem solid $border-color;
   ". contact_form  maps ."
   ". contact_form  maps ."
   ". . . . " ;
-.contact_head{
-  font-size: 2.5rem;
-  grid-area:contact_head;
-}
-.contact_form{
-  grid-area:contact_form;
-  max-width:50rem;
-  max-height:100%;
-  background-color: $border-color;
-  color:$extra-color;
-  padding-left:2rem;
-  border-radius:5px;
-  display:flex;
-  flex-direction: column;
-  input,textarea{
-    width:85%;
-    
-  } 
-  .get_in_touch{
-    margin-top:1rem;
+  .contact_head{
+    font-size: 2.5rem;
+    grid-area:contact_head;
   }
-  .submit{
-    margin:1rem 0;
-  }
-}
-.maps{
-  grid-area:maps;
-  display:flex;
-  flex-direction:column;
-  justify-content: center;
-}
-.contact_link{
-  background-color:$border-color;
-  color:$extra-color;
-  border:1px solid $extra-color;
-  border-radius:5px;
-  padding:1rem;
-  text-align:center;
-  margin-bottom:1rem;
-}
-@media only screen and (max-width:700px){
- & {
-   display:grid;
-   height:130vh;
-   grid-template-areas:". . . . "
-   ".  contact_head  . . "
-   ". contact_form contact_form  . "
-   ".  maps maps . ";
- }
- .contact_form{
-  max-height:100%;
-  .submit{
-   margin-bottom: 1rem;
- }
-}
-}
-@media only screen and (max-width:350px){
-  & {
-    height:150vh;
-}
-}
-}
-    .bottomNavigation{
-      background-color: black;
-      color:white;
-  }
-  .bottomNavigation div{
+  .contact_form{
+    grid-area:contact_form;
+    max-width:50rem;
+    background-color: $border-color;
+    color:$extra-color;
+    padding-left:2rem;
+    border-radius:5px;
+    display:flex;
+    flex-direction: column;
+    input,textarea{
+      width:85%;
+    } 
+    .get_in_touch{
+      margin-top:1rem;
+    }
+    .submit{
+      margin:1rem 0;
+    }
+  }/*end of contact form*/
+  .maps{
+    grid-area:maps;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    .contact_link{
+      background-color:$border-color;
+      color:$extra-color;
+      border:1px solid $extra-color;
+      border-radius:5px;
+      padding:1rem;
       text-align:center;
-      padding:1%;
+      margin-bottom:1rem;
+    }
+  }/*end of maps*/
+  @media only screen and (max-width:700px){
+    & {
+    display:grid;
+    height:130vh;
+    grid-template-areas:". . . . "
+      ".  contact_head  . . "
+      ". contact_form contact_form  . "
+      ".  maps maps . ";
+    }
+    .contact_form{
+      max-height:100%;
+      .submit{
+      margin-bottom: 1rem;
+      }
+    }
+  }
+  @media only screen and (max-width:350px){
+    & {
+      height:150vh;
+    }
+  }
+}
+.bottomNavigation{
+  background-color: black;
+  color:white;
+  div{
+    text-align:center;
+    padding:1%;
   }
   .info p{
-      padding:1%;
+    padding:1%;
   }
   .social_footer i{
       padding:1%
   }
-  
-  @media screen  and (min-width:700px){
-      .info{
-          width:60%;
-          margin:0px auto;
-          display:flex;
-          justify-content: space-around;
-      }
-      .social_footer{
-          width:15%;
-          margin:0px auto;
-          
-          display:flex;
-          justify-content: space-around;
-      }
+}  
+@media screen  and (min-width:700px){
+  .info{
+    width:60%;
+    margin:0px auto;
+    display:flex;
+    justify-content: space-around;
   }
+  .social_footer{
+    width:15%;
+    margin:0px auto;
+    display:flex;
+    justify-content: space-around;
+  }
+}

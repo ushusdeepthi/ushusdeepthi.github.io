@@ -1,15 +1,20 @@
+/*importing partial variable file*/
 * {
   box-sizing: border-box;
 }
 
+/*importing partial base file*/
 /* end of mixin animation*/
 /*end of mixin container*/
+/*mixin for vendor prefixes*/
+/*importing patial mixin file*/
+/*start nav bar*/
 .nav {
   display: flex;
   justify-content: space-between;
   padding: 0 2%;
   background-color: black;
-  color: bisque;
+  color: #ffe4c4;
   position: sticky;
   top: 0px;
   z-index: 999;
@@ -38,7 +43,9 @@
   margin: 2%;
 }
 
+/*end of nesting nav bar*/
 @media screen and (max-width: 650px) {
+  /*menu appearing after if screen width<650px*/
   .nav {
     display: flex;
     /*end of top navigation*/
@@ -58,7 +65,7 @@
     padding: 0;
     margin: 0;
     z-index: 2;
-    /*ending of menulist*/
+    /*ending of menulist nesting*/
     /*end of nav nesting*/
   }
   .nav .topNavigation .menulist {
@@ -79,7 +86,7 @@
     width: 30px;
     height: 3px;
     border-radius: 10px;
-    background: white;
+    background: ivory;
     transition: all 250ms ease-in-out;
     /*including mixin transition*/
   }
@@ -135,25 +142,25 @@
     border: solid 1px #f4f4f4;
   }
   .nav .topNavigation nav ul li:hover {
-    background-color: bisque;
+    background-color: #380228;
   }
   .nav .topNavigation nav ul li a {
     text-decoration: none;
-    color: black;
+    color: #ffe4c4;
   }
   .nav .social {
     width: 50%;
   }
-  /* */
+  /*end of medi queries */
 }
 
-/**/
+/*end of div nav nesting*/
 .wrapper {
   background-image: url("../images/background3.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
-  color: bisque;
+  color: #ffe4c4;
   height: 100vh;
   max-height: 100vh;
   display: grid;
@@ -162,6 +169,7 @@
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: ". . . . . " ".  hi . . ." ". name name name ." ". education education education education" ". . . caption caption" ". . . . . ";
   /*nesting wrapper starts*/
+  /*end of media queries*/
   /*animation included from mixin*/
 }
 
@@ -236,11 +244,12 @@
 }
 
 /*nesting of warpper ends*/
+/*grid container for about page starts*/
 .grid_container {
   height: 100%;
   max-height: 200vh;
   margin-top: 2%;
-  color: bisque;
+  color: #ffe4c4;
   background-color: #001016;
   display: grid;
   grid-gap: 0.5rem;
@@ -249,6 +258,9 @@
   grid-template-areas: ". . . . . . ." " . heading heading . . . .  " " . . details details details details . " " . image details details details details . " " . image details details details details . " ". .  details details details details . " ". . select select select select ." ". . . . . . .";
   /*end of nesting .details*/
   /*end of nesting .select*/
+  /*end of a mixin bp-large*/
+  /*end of mixin bp medium*/
+  /*end of mixin bp small*/
   /*end of media queries*/
 }
 
@@ -257,7 +269,7 @@
   grid-area: heading;
 }
 
-.grid_container #image {
+.grid_container .image {
   text-align: center;
   width: 150%;
   align-self: end;
@@ -270,12 +282,12 @@
 
 .grid_container .details {
   height: 100%;
-  background-color: white;
+  background-color: ivory;
   grid-area: details;
   color: #001016;
 }
 
-.grid_container #image {
+.grid_container .image {
   border-radius: 50%;
 }
 
@@ -301,7 +313,7 @@
   .grid_container .details {
     height: 100%;
   }
-  .grid_container #image {
+  .grid_container .image {
     padding: 0px;
     width: 180%;
     align-self: center;
@@ -316,13 +328,13 @@
     flex-direction: column;
     height: auto;
     align-items: center;
-    background-color: white;
+    background-color: ivory;
   }
   .grid_container .details h4 {
     text-align: center;
   }
-  .grid_container #image {
-    background-color: white;
+  .grid_container .image {
+    background-color: ivory;
     width: 30%;
     padding: 1%;
     height: auto;
@@ -351,7 +363,7 @@
 /*end of nesting grid_container*/
 .projects {
   margin-top: 1%;
-  color: bisque;
+  color: #ffe4c4;
   background-color: #001016;
   height: 100%;
   max-height: 400vh;
@@ -360,18 +372,7 @@
   grid-template-columns: 0.25fr 1fr 1fr 1fr 1fr 1fr 1fr 0.025fr;
   grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: ". . . . . . . ." ". h1 h1 . . . . . " ". yatzy yatzy yatzy quiz quiz quiz ." ". yatzy yatzy yatzy quiz quiz quiz ." ". acme acme acme cv cv cv ." ". acme acme acme cv cv cv ." ". . . . . . . .";
-}
-
-.projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
-  background-color: white;
-  color: black;
-  border-radius: 5px;
-}
-
-.projects img {
-  width: 100%;
-  max-width: 70vh;
-  height: auto;
+  /*end nesting yatzy,quiz acme,cv*/
 }
 
 .projects h1 {
@@ -396,6 +397,9 @@
 }
 
 .projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
+  background-color: ivory;
+  color: black;
+  border-radius: 5px;
   font-size: 0.75rem;
   display: grid;
   grid-gap: 0.2rem;
@@ -404,7 +408,7 @@
   grid-template-areas: "p_img p_head" "p_img p_desc" "p_img p_link";
 }
 
-.projects .p_img {
+.projects .yatzy .p_img, .projects .quiz .p_img, .projects .acme .p_img, .projects .cv .p_img {
   height: 100%;
   width: auto;
   max-width: 100%;
@@ -412,17 +416,25 @@
   border-radius: 5px;
 }
 
-.projects .p_head {
+.projects .yatzy .p_head, .projects .quiz .p_head, .projects .acme .p_head, .projects .cv .p_head {
   grid-area: p_head;
 }
 
-.projects .p_desc {
+.projects .yatzy .p_desc, .projects .quiz .p_desc, .projects .acme .p_desc, .projects .cv .p_desc {
   grid-area: p_desc;
 }
 
-.projects .p_link {
+.projects .yatzy .p_link, .projects .quiz .p_link, .projects .acme .p_link, .projects .cv .p_link {
   grid-area: p_link;
   justify-self: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #001016;
+  color: #ffe4c4;
+  width: 7rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 @media screen and (max-width: 900px) {
@@ -478,7 +490,7 @@
   height: 100%;
   max-height: 100vh;
   margin-top: 2%;
-  color: bisque;
+  color: #ffe4c4;
   background-color: #001016;
   display: grid;
   grid-gap: 0.5rem;
@@ -494,7 +506,7 @@
   grid-area: heading;
 }
 
-#skills #image {
+#skills .image {
   text-align: center;
   width: 150%;
   align-self: end;
@@ -507,7 +519,7 @@
 
 #skills .details {
   height: 100%;
-  background-color: white;
+  background-color: ivory;
   grid-area: details;
   color: #001016;
 }
@@ -527,7 +539,7 @@
 }
 
 @media screen and (max-width: 900px) {
-  #skills #image {
+  #skills .image {
     width: 180%;
     height: auto;
     align-self: center;
@@ -542,14 +554,14 @@
     flex-direction: column;
     max-height: 100vh;
     align-items: center;
-    background-color: white;
+    background-color: ivory;
   }
-  #skills #image {
+  #skills .image {
     width: 30%;
     height: auto;
     padding: 0px;
     align-self: auto;
-    border: 0.5rem solid white;
+    border: 0.5rem solid ivory;
   }
   #skills .heading {
     background-color: #001016;
@@ -558,17 +570,20 @@
   }
 }
 
+/*end of skills page*/
 .contact_page {
   margin-top: 1%;
-  color: bisque;
+  color: #ffe4c4;
   background-color: #001016;
   height: 100vh;
   display: grid;
   grid-gap: 1rem;
   justify-content: center;
   grid-template-columns: 0.2fr 1fr 1fr 0.2fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 0.25fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
   grid-template-areas: ". . . . " ". contact_head . .  " ". contact_form maps ." ". contact_form maps ." ". contact_form maps ." ". contact_form  maps ." ". contact_form  maps ." ". contact_form  maps ." ". . . . ";
+  /*end of contact form*/
+  /*end of maps*/
 }
 
 .contact_page .contact_head {
@@ -579,8 +594,7 @@
 .contact_page .contact_form {
   grid-area: contact_form;
   max-width: 50rem;
-  max-height: 100%;
-  background-color: white;
+  background-color: ivory;
   color: black;
   padding-left: 2rem;
   border-radius: 5px;
@@ -607,8 +621,8 @@
   justify-content: center;
 }
 
-.contact_page .contact_link {
-  background-color: white;
+.contact_page .maps .contact_link {
+  background-color: ivory;
   color: black;
   border: 1px solid black;
   border-radius: 5px;
@@ -647,11 +661,11 @@
   padding: 1%;
 }
 
-.info p {
+.bottomNavigation .info p {
   padding: 1%;
 }
 
-.social_footer i {
+.bottomNavigation .social_footer i {
   padding: 1%;
 }
 
