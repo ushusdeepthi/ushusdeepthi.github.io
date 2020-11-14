@@ -1,0 +1,44 @@
+1. Scrum
+
+Scrum is a most widely used framework for agile development. It can be considered as a subset to Agile development It can be explained as a set of practices which the team follow to be consistent with the framework. As an example, scrum requires cycles called sprint which make sit efficient.
+scrum has roles likes Product Owner, scrum master and the development team. 
+product owner is the person who gives the requirements and can be considered as an interface between the customers, asking the requirement as the development team which is supposed to deliver it. 
+scrum master- The scrum master is the one who make sure that the process runs smoothly. He works closely with the product team and tries to improve the productivity. It is also responsible for updating the status of the project and should have a quite good knowledge of how scrum works.
+Team- This is a group of people who are developing and testing the product.
+
+How scrum works
+Scrum has short cycles which are called sprints which allows us to constantly improve and accept changes. The list of tasks for the entire project. The scrum events are organising the backlog, sprint planning (worked to performed in the sprint is planned here), sprint (actual time the team work together), daily scrum(short meeting taking place every day), sprint review (At end of each sprint session, team comes together to review) and sprint retrospective (where team comes together and dicuss what worked and what did not).
+Pros and cons of scrum
+pros- It provides continous feedback and therefore can adapt to situation smoothly, continous testing improves quality, coomunication with team increases common understanding.
+cons- requires skill to organise in proper way, suited for smaller teams.
+
+2. Grafiska profil
+This can be considered as a type of manual or instruction for how a company or organization's logo should be used, along with colors, fonts and all type of elements that can be included in the visual communication. The main of this is to be consistent with the design, and makes the communication easy with the recipient. Generally a graphical profile has 
+(i)logo- mainly in a few different designs so that it can be adapted to various situations.
+(ii)few colors
+(iii) one or two font types.
+(iv)Any others graphical elements like symbols or patterns.
+The most important thing to be taken into consideration while making a graphical profile is what we want to communicate and with whom. The profile should efficiently aim to catch the attention of the recipients.
+pros- More attractive, easy to communicate with recipient, increases opportubity to get in touch with the customers.
+
+3. Accessibility
+The web content Accessibility Guideline (WCAG) is a set of inetnationally adopted and accepted  guidelines or instruction to improve the web accessibility. It make sthe website useful for all users. It helps developers, designers etc to create accessible websites.
+
+The accesibily criterion used in this project:
+(i) 1.4.3 och 1.4.6-The visual presentation of the text and the image sof text has contrast ratio of atleast 7:1. Checked the contrast ratio of the background, and the text color, which varies across the webbpage, using contrast checker from WebAIM and have a contrast ratio of 15.79:1.
+The intention of this  criterion is to provide enough contrast between the text and its background color and the benefit  is that it makes it easier for people with color deficiencies and low vision.
+(ii) 1.4.13-Content on hover or focus- An additional content becomes vissible and then hidden with hover or focus. In this project this is achieved by a hoverable tooltip
+The aditional content is dismissable, hoverable and persistent. Dismissable- the additional content does not interfere with the original content in the page. Hoverable- The additional content appears on hover of a target.
+Persistent- This ensures that the user have enough time to percieve the additional content which becomes visible.
+It benefits users with low vision who view content under magnification will be better able to view content on hover or focus without reducing their desired magnification.
+(iii) Page titled-The webpage have titles that describe topic or purpose. This page is titled as "Portfolio-Deepthi Ushus"
+This is to help users find content and orient themselves within it by ensuring that each Web page has a descriptive title.
+(iv)3.1.1 and 3.1.2- Language of page and Language of parts- The page has a language attribute lang="en" on html tag to show the human language of the page and it has a div with a language attribute lang="sv" to mention a text in swedish.
+The benefit of this criterion is that the users who use screen readers that convert text to synthetic speech.
+(v)3.3.1- Error identification- An input error is automatically detected  and describes to user in a text.
+this project gives alert to the user if there is an error in the form for example if numbers are typed in place of name.
+This criterion help the user to identify error and correct it.
+
+pros and cons of accessibily
+pros- Website is accessible to all internet users, website following criterion is easier to maintain and extend
+cons- accessibile websites may be a little monotonous with less colours and loud contents.
