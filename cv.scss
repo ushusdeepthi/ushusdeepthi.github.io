@@ -3,16 +3,27 @@
 @import'./mixin';     /*importing patial mixin file*/
 
 /*start nav bar*/
+a{
+  text-decoration: none;
+  color:$text-color;
+  
+}
 .nav{
   @include prefix('display','flex');
   display:flex;
   justify-content: space-between;
-  padding: 0 2%;
+  padding: 1rem ;
   background-color: black;
   color:$text-color;
   position:sticky;
+  font-size:1.25rem;
   top:0px;
   z-index:999;
+    .nav__logo {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+  }
   .topNavigation{
     display:none;
   }
@@ -94,7 +105,6 @@
       display: none;
     }
     nav {
-      font-family: Arial, Helvetica, sans-serif;
       display: none;
       position: absolute;
       top: 12vh;
@@ -132,179 +142,210 @@
   }/*end of medi queries */
 }/*end of div nav nesting*/
 
-.wrapper{
-  background-image:url("../images/background3.jpg") ;
+ .wrapper{
+    display:flex;
+    justify-content:center;
+    
+  }
+
+.main{
+  background-image:url("../images/internet.jpg") ;
   background-repeat: no-repeat;
   background-size:100% 100%;
   position:relative;
   color:$text_color;
   height:100vh;
-  max-height:100vh;
-  display:grid;
-  grid-gap:0.2rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows:  1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas:  ". . . . . "
-  ".  hi . . ."
-  ". name name name ."
-  ". education education education education"
-  ". . . caption caption"
-  ". . . . . ";
-  /*nesting wrapper starts*/
-  .hi{
-    grid-area: hi;
-  } 
-  .name{
-    grid-area: name;
-  } 
-  .education{
-    grid-area: education;
-  } 
-  .caption{
-    grid-area: caption;
-  } 
-  @media only screen and (max-width:650px){
-    &{
-      grid-template-columns: 0.2fr 1fr 0.2fr;
-      grid-template-rows:0.5fr 0.5fr 0.5fr 1fr 1fr ;
-      grid-template-areas:". . ."
-      ".  hi ."
-      ".  name ."
-      ". education education"
-      ". caption ."
-    }
-    .hi, .name, .eduction{
-      text-align:center;
-    }
-    .eduction{
-      align-self: center;
-    }
-    .caption{
-      justify-self:end;
-    }
-  }/*end of media queries*/
-  .hi{
-  animation-delay: 1s;
+  min-height:100vh;
+  .wrapper{
+    width:100%;
+    padding:10rem 2rem 10rem 3rem;
+    flex-wrap:wrap;
+    justify-content:flex-start
   }
-  .name{
-    animation-delay: 2s;
-  }
-  .education{
-    animation-delay: 3s;
-  }
-  .caption{
-    animation-delay: 4s;
-  }
-  @include animation;/*animation included from mixin*/
-}/*nesting of warpper ends*/
-/*grid container for about page starts*/
-.grid_container{
-  height:100%;
-  max-height:200vh;
-  @include container;
-    .image{
-      border-radius:50%;
-    }
-    .details {
-      padding:2rem;
-      p{
-        padding-left:2rem;
-        text-align:left;
-      } 
-    } /*end of nesting .details*/
-    .select{
-      grid-area:select;
-      text-align:center;
-        button{
-          margin:1rem ;
-        }
-    }/*end of nesting .select*/                                                    
-  @include bp-large{                            
-    .details{
-      height:100%;
-    }
-    .image{
-      padding:0px;
-      width:180%;
-      align-self:center;
-      border:0.5rem solid white;
-    }  
-  }/*end of a mixin bp-large*/
+  .name{ 
+    width:100vw;
+    font-size:3.5rem;
+    font-weight:900;
+    padding:2rem 5rem;
+  } 
+  .education{ 
+      font-size: 2rem ;
+      font-weight: 600;
+      padding: 2rem 5.2rem;
+  } 
   @include bp-medium{
-    &{
-      display:flex;
-      grid-gap:0.1rem;
-      flex-direction:column;
-      height:auto;
-      align-items:center;
-      background-color: $border-color;
+
+    .name{
+     padding:3.5rem 0 2rem 3.5rem ;
     }
-    .details  h4{
-      text-align:center;
+    .education{ 
+     padding:2rem  0 2rem 5.2rem;
+  }   
+  }/*end of mixin bp medium*/
+  @media  screen and (max-width:578px){
+   .name{
+     font-size:2.5rem;
+     padding:2rem 0 2rem 2.5rem ;
     }
-    .image{
-      background-color:$border-color;
-      width:30%;
-      padding:1%;
-      height:auto;
-      align-self:auto;
+    .education{ 
+     font-size:1.5rem;
+     padding:2rem  0 2rem 2.7rem;
+  } 
+  }
+  @include bp-small{
+    .name{
+     font-size:2.125rem;
+     padding:0;
+    }
+    .education{ 
+     font-size:1.25rem;
+       padding:2rem 0;
+  } 
+  }/*end of mixin bp small*/  
+/*end of media queries*/
+}/*nesting of warpper ends*/
+.projects{
+  .wrapper{
+      border-radius:5px;
+      margin-top:2rem;
+    }
+    .about__side-bar {
+    text-align: center;
+    .side-bar__prof-pic {
+      max-width: 80%;
+      border-radius: 50%;
+      margin: 1em 0;
       border:0.5rem solid $color-background;
     }
+    .side-bar__heading h5 {
+      padding: 1em 0;
+      font-weight:600;
+    }
+    .side-bar__heading h5:hover{
+        color:rgb(170, 14, 22);
+      }
+  }
+    .about__main {
+    min-width:75vw;
+    background: $border-color;
+    color:$color-background;
+    z-index: 1;
+    padding: 2em;
+    margin: 1em;
+    .background {
+      position: absolute;
+      z-index: -1;
+      display: block;
+      min-height: 50%;
+      max-height: 50%;
+      .background__text {
+        color:$text-color;
+        font-size: 4rem;
+      }
+    }
+  }
+  
+  @include bp-medium{
+    .wrapper{
+      flex-wrap: wrap;
+      background-color: $border-color;
+    }
     .heading{
-      background-color: $color-background;
+      color:$text-color;
+      background-color:$color-background;
+
+    }
+    .about__side-bar{
+      width:100%;
+        align-self: start;
+        background-color: $border-color;
+        color:$color-background;   
+    .side-bar__prof-pic {
+      width:10rem;
+      height:auto;
+      align-self:auto;
+    }
+    .side-bar__heading{  
+      display:flex;
+      padding:0 4em;
+      justify-content:space-between;
+      h5{
+        font-size:1.5rem;
+        font-weight:600;
+      }
+    }
+  }
+     .about__main{
+       width:100%;
+     }
+    .heading{
       align-self:stretch;
       text-align:center;
     }
   }/*end of mixin bp medium*/
-  @include bp-small{
-    &{
-      height:100%;
+  @media  screen and (max-width:600px){
+   .about__side-bar{   
+    .side-bar__heading{  
+      padding:1rem;
+      h5{  
+        font-size:1.2rem;
+        font-weight:600;
+      }
     }
+  }
+  }
+  @include bp-small{
+    .about__side-bar{   
+    .side-bar__heading{
+      
+      padding:0.5rem;
+      h5{
+        text-align:start;
+        font-size:1rem;
+        font-weight:600;
+      }
+
+    }
+  }
   }/*end of mixin bp small*/
   @media  screen and (max-width:350px){
-    &{
-      height:100%;
+      .about__side-bar{   
+    .side-bar__heading{
+      
+      padding:0.2rem;
+      h5{
+       
+        font-size:0.85rem;
+        font-weight:600;
+      }
+
     }
-  }/*end of media queries*/
-}/*end of nesting grid_container*/ 
+  }
+  }
+}
 .projects{
-  margin-top:1%;
-  color:$text-color;
+ padding:3.5rem 2rem ;
   background-color: $color-background;
   height:100%;
-  max-height:400vh;
-  display:grid;
+  max-height:600vh;
+  margin:2rem 0;
+  color:$text-color;
+  
+}
+.project__sub{
+  padding: 2rem 0;
+  justify-content:center;
+  display:flex;
+  flex-wrap: wrap;
   grid-gap:2rem;
-  grid-template-columns: 0.25fr 1fr 1fr 1fr 1fr 1fr 1fr 0.025fr;
-  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas:". . . . . . . ."
-  ". h1 h1 . . . . . "
-  ". yatzy yatzy yatzy quiz quiz quiz ."
-  ". yatzy yatzy yatzy quiz quiz quiz ."
-  ". acme acme acme cv cv cv ."
-  ". acme acme acme cv cv cv ."
-  ". . . . . . . .";  
-  h1{
-    grid-area: h1;
-    align-self:center;
-  }
-  .yatzy{
-    grid-area:yatzy;
-  }
-  .quiz{
-    grid-area:quiz;
-  }
-  .acme{
-    grid-area:acme;
-  }
-  .cv{
-    grid-area:cv;
-  }
-  .yatzy,.quiz,.acme,.cv{
+
+  
+  .work{
     background-color: $border-color;
     color:$extra-color;
     border-radius:5px;
     font-size:0.75rem;
+    width:40%;
     display:grid;
     grid-gap:0.2rem;
     grid-template-columns:0.75fr 1fr;
@@ -341,14 +382,12 @@
   @include bp-large{
     &{
       padding-bottom:3rem;
-      display:flex;
-      flex-direction: column;
-      align-items: center;
+
       h1{
         margin-top:5rem;
       }
     }
-    .yatzy,.quiz,.acme,.cv{
+    .work{
       width:60%;
       height:auto;
       .p_img{
@@ -358,17 +397,17 @@
     }
   }
   @include bp-medium{
-    .yatzy,.quiz,.acme,.cv{
+    .work{
       width:70%;
     }
   }
   @media only screen and (max-width:550px){
-    .yatzy,.quiz,.acme,.cv{
+    .work{
       width:90%;
     }
   }
   @include bp-small{
-    .yatzy,.quiz,.acme,.cv{
+    .work{
       display:flex;
       flex-direction: column;
       align-items: center;
@@ -385,7 +424,7 @@
 }/*end of nesting projects*/
 #skills{
   height:100%; 
-  max-height:100vh;
+  max-height:300vh;
   @include container;
   .details {
     padding:2rem;
@@ -428,53 +467,15 @@
     }
   }/*end of media queries*/
 }/*end of skills page*/
-.contact_page{
-  margin-top:1%;
-  color:$text-color;
-  background-color: $color-background;
-  height:100vh;
-  display:grid;
-  grid-gap:1rem;
-  justify-content: center;
-  grid-template-columns: 0.2fr 1fr 1fr 0.2fr;
-  grid-template-rows: 1fr 0.25fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
-  grid-template-areas:". . . . "
-  ". contact_head . .  "
-  ". contact_form maps ."
-  ". contact_form maps ."
-  ". contact_form maps ."
-  ". contact_form  maps ."
-  ". contact_form  maps ."
-  ". contact_form  maps ."
-  ". . . . " ;
-  .contact_head{
-    font-size: 2.5rem;
-    grid-area:contact_head;
-  }
-  .contact_form{
-    grid-area:contact_form;
-    max-width:50rem;
-    background-color: $border-color;
-    color:$extra-color;
-    padding-left:2rem;
-    border-radius:5px;
-    display:flex;
-    flex-direction: column;
-    input,textarea{
-      width:85%;
-    } 
-    .get_in_touch{
-      margin-top:1rem;
-    }
-    .submit{
-      margin:1rem 0;
-    }
-  }/*end of contact form*/
+
+
   .maps{
-    grid-area:maps;
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
+    width:50%;
+   margin:0px auto;
+   height:100%; 
+  max-height:100vh;
+    // display:flex;
+
     .contact_link{
       background-color:$border-color;
       color:$extra-color;
@@ -484,31 +485,18 @@
       text-align:center;
       margin-bottom:1rem;
     }
+    @include bp-medium{
+    &{
+      width:80%;
+    }
+  }
+   @include bp-small{
+    &{
+      width:100%;
+    }
+  }
   }/*end of maps*/
-  
 
-  @media only screen and (max-width:700px){
-    & {
-    display:grid;
-    height:130vh;
-    grid-template-areas:". . . . "
-      ".  contact_head  . . "
-      ". contact_form contact_form  . "
-      ".  maps maps . ";
-    }
-    .contact_form{
-      max-height:100%;
-      .submit{
-      margin-bottom: 1rem;
-      }
-    }
-  }
-  @media only screen and (max-width:350px){
-    & {
-      height:150vh;
-    }
-  }
-}
 .bottomNavigation{
   background-color: black;
   color:white;
@@ -527,7 +515,6 @@
   .info{
     width:60%;
     margin:0px auto;
-    display:flex;
     justify-content: space-around;
   }
   .social_footer{

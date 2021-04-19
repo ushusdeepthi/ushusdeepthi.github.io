@@ -1,11 +1,11 @@
 /*importing partial variable file*/
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700&subset=latin,latin-ext);
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap");
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto Slab', serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 /*importing partial base file*/
@@ -13,6 +13,11 @@ body {
 /*end of mixin container*/
 /*importing patial mixin file*/
 /*start nav bar*/
+a {
+  text-decoration: none;
+  color: #ffe4c4;
+}
+
 .nav {
   -webkit-display: flex;
   -moz-display: flex;
@@ -20,14 +25,21 @@ body {
   -moz-display: flex;
   display: flex;
   justify-content: space-between;
-  padding: 0 2%;
+  padding: 1rem;
   background-color: black;
   color: #ffe4c4;
   position: sticky;
+  font-size: 1.25rem;
   top: 0px;
   z-index: 999;
   /*end of nesting social*/
   /*end of nesting links*/
+}
+
+.nav .nav__logo {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
 }
 
 .nav .topNavigation {
@@ -123,7 +135,6 @@ body {
     display: none;
   }
   .nav .topNavigation nav {
-    font-family: Arial, Helvetica, sans-serif;
     display: none;
     position: absolute;
     top: 12vh;
@@ -164,251 +175,220 @@ body {
 
 /*end of div nav nesting*/
 .wrapper {
-  background-image: url("../images/background3.jpg");
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  background-image: url("../images/internet.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
   color: #ffe4c4;
   height: 100vh;
-  max-height: 100vh;
-  display: grid;
-  grid-gap: 0.2rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: ". . . . . " ".  hi . . ." ". name name name ." ". education education education education" ". . . caption caption" ". . . . . ";
-  /*nesting wrapper starts*/
-  /*end of media queries*/
-  /*animation included from mixin*/
-}
-
-.wrapper .hi {
-  grid-area: hi;
-}
-
-.wrapper .name {
-  grid-area: name;
-}
-
-.wrapper .education {
-  grid-area: education;
-}
-
-.wrapper .caption {
-  grid-area: caption;
-}
-
-@media only screen and (max-width: 650px) {
-  .wrapper {
-    grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-rows: 0.5fr 0.5fr 0.5fr 1fr 1fr;
-    grid-template-areas: ". . ." ".  hi ." ".  name ." ". education education" ". caption .";
-  }
-  .wrapper .hi, .wrapper .name, .wrapper .eduction {
-    text-align: center;
-  }
-  .wrapper .eduction {
-    align-self: center;
-  }
-  .wrapper .caption {
-    justify-self: end;
-  }
-}
-
-.wrapper .hi {
-  animation-delay: 1s;
-}
-
-.wrapper .name {
-  animation-delay: 2s;
-}
-
-.wrapper .education {
-  animation-delay: 3s;
-}
-
-.wrapper .caption {
-  animation-delay: 4s;
-}
-
-.wrapper .hi, .wrapper .name, .wrapper .education, .wrapper .caption {
-  width: 100%;
-  overflow: hidden;
-  animation: animate 2s linear forwards;
-}
-
-@keyframes animate {
-  0% {
-    width: 0px;
-    height: 0px;
-  }
-  30% {
-    width: 50%;
-    height: 0px;
-  }
-  60% {
-    width: 100%;
-    height: 80px;
-  }
-}
-
-/*nesting of warpper ends*/
-/*grid container for about page starts*/
-.grid_container {
-  height: 100%;
-  max-height: 200vh;
-  margin-top: 2%;
-  color: #ffe4c4;
-  background-color: #001016;
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: 1fr 1fr 2fr 1fr 2fr 1fr 1fr;
-  grid-template-rows: 0.5fr 0.25fr 0.25fr 1fr 1fr 1fr 0.5fr 0.5fr;
-  grid-template-areas: ". . . . . . ." " . heading heading . . . .  " " . . details details details details . " " . image details details details details . " " . image details details details details . " ". .  details details details details . " ". . select select select select ." ". . . . . . .";
-  /*end of nesting .details*/
-  /*end of nesting .select*/
-  /*end of a mixin bp-large*/
+  min-height: 100vh;
   /*end of mixin bp medium*/
   /*end of mixin bp small*/
   /*end of media queries*/
 }
 
-.grid_container .heading {
-  font-size: 3rem;
-  grid-area: heading;
+.main .wrapper {
+  width: 100%;
+  padding: 10rem 2rem 10rem 3rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
-.grid_container .image {
-  text-align: center;
-  width: 150%;
-  align-self: end;
-  height: auto;
-  padding: 1%;
-  z-index: 10;
-  grid-area: image;
-  border: 10px solid white;
+.main .name {
+  width: 100vw;
+  font-size: 3.5rem;
+  font-weight: 900;
+  padding: 2rem 5rem;
 }
 
-.grid_container .details {
-  height: 100%;
-  background-color: ivory;
-  grid-area: details;
-  color: #001016;
-}
-
-.grid_container .image {
-  border-radius: 50%;
-}
-
-.grid_container .details {
-  padding: 2rem;
-}
-
-.grid_container .details p {
-  padding-left: 2rem;
-  text-align: left;
-}
-
-.grid_container .select {
-  grid-area: select;
-  text-align: center;
-}
-
-.grid_container .select button {
-  margin: 1rem;
-}
-
-@media screen and (max-width: 900px) {
-  .grid_container .details {
-    height: 100%;
-  }
-  .grid_container .image {
-    padding: 0px;
-    width: 180%;
-    align-self: center;
-    border: 0.5rem solid white;
-  }
+.main .education {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 2rem 5.2rem;
 }
 
 @media only screen and (max-width: 768px) {
-  .grid_container {
-    display: flex;
-    grid-gap: 0.1rem;
-    flex-direction: column;
-    height: auto;
-    align-items: center;
+  .main .name {
+    padding: 3.5rem 0 2rem 3.5rem;
+  }
+  .main .education {
+    padding: 2rem  0 2rem 5.2rem;
+  }
+}
+
+@media screen and (max-width: 578px) {
+  .main .name {
+    font-size: 2.5rem;
+    padding: 2rem 0 2rem 2.5rem;
+  }
+  .main .education {
+    font-size: 1.5rem;
+    padding: 2rem  0 2rem 2.7rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .main .name {
+    font-size: 2.125rem;
+    padding: 0;
+  }
+  .main .education {
+    font-size: 1.25rem;
+    padding: 2rem 0;
+  }
+}
+
+/*nesting of warpper ends*/
+.projects {
+  /*end of mixin bp medium*/
+  /*end of mixin bp small*/
+}
+
+.projects .wrapper {
+  border-radius: 5px;
+  margin-top: 2rem;
+}
+
+.projects .about__side-bar {
+  text-align: center;
+}
+
+.projects .about__side-bar .side-bar__prof-pic {
+  max-width: 80%;
+  border-radius: 50%;
+  margin: 1em 0;
+  border: 0.5rem solid #001016;
+}
+
+.projects .about__side-bar .side-bar__heading h5 {
+  padding: 1em 0;
+  font-weight: 600;
+}
+
+.projects .about__side-bar .side-bar__heading h5:hover {
+  color: #aa0e16;
+}
+
+.projects .about__main {
+  min-width: 75vw;
+  background: ivory;
+  color: #001016;
+  z-index: 1;
+  padding: 2em;
+  margin: 1em;
+}
+
+.projects .about__main .background {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  min-height: 50%;
+  max-height: 50%;
+}
+
+.projects .about__main .background .background__text {
+  color: #ffe4c4;
+  font-size: 4rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .projects .wrapper {
+    flex-wrap: wrap;
     background-color: ivory;
   }
-  .grid_container .details h4 {
-    text-align: center;
+  .projects .heading {
+    color: #ffe4c4;
+    background-color: #001016;
   }
-  .grid_container .image {
+  .projects .about__side-bar {
+    width: 100%;
+    align-self: start;
     background-color: ivory;
-    width: 30%;
-    padding: 1%;
+    color: #001016;
+  }
+  .projects .about__side-bar .side-bar__prof-pic {
+    width: 10rem;
     height: auto;
     align-self: auto;
-    border: 0.5rem solid #001016;
   }
-  .grid_container .heading {
-    background-color: #001016;
+  .projects .about__side-bar .side-bar__heading {
+    display: flex;
+    padding: 0 4em;
+    justify-content: space-between;
+  }
+  .projects .about__side-bar .side-bar__heading h5 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .projects .about__main {
+    width: 100%;
+  }
+  .projects .heading {
     align-self: stretch;
     text-align: center;
   }
 }
 
+@media screen and (max-width: 600px) {
+  .projects .about__side-bar .side-bar__heading {
+    padding: 1rem;
+  }
+  .projects .about__side-bar .side-bar__heading h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+
 @media only screen and (max-width: 450px) {
-  .grid_container {
-    height: 100%;
+  .projects .about__side-bar .side-bar__heading {
+    padding: 0.5rem;
+  }
+  .projects .about__side-bar .side-bar__heading h5 {
+    text-align: start;
+    font-size: 1rem;
+    font-weight: 600;
   }
 }
 
 @media screen and (max-width: 350px) {
-  .grid_container {
-    height: 100%;
+  .projects .about__side-bar .side-bar__heading {
+    padding: 0.2rem;
+  }
+  .projects .about__side-bar .side-bar__heading h5 {
+    font-size: 0.85rem;
+    font-weight: 600;
   }
 }
 
-/*end of nesting grid_container*/
 .projects {
-  margin-top: 1%;
-  color: #ffe4c4;
+  padding: 3.5rem 2rem;
   background-color: #001016;
   height: 100%;
-  max-height: 400vh;
-  display: grid;
+  max-height: 600vh;
+  margin: 2rem 0;
+  color: #ffe4c4;
+}
+
+.project__sub {
+  padding: 2rem 0;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
   grid-gap: 2rem;
-  grid-template-columns: 0.25fr 1fr 1fr 1fr 1fr 1fr 1fr 0.025fr;
-  grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: ". . . . . . . ." ". h1 h1 . . . . . " ". yatzy yatzy yatzy quiz quiz quiz ." ". yatzy yatzy yatzy quiz quiz quiz ." ". acme acme acme cv cv cv ." ". acme acme acme cv cv cv ." ". . . . . . . .";
   /*end nesting yatzy,quiz acme,cv*/
 }
 
-.projects h1 {
-  grid-area: h1;
-  align-self: center;
-}
-
-.projects .yatzy {
-  grid-area: yatzy;
-}
-
-.projects .quiz {
-  grid-area: quiz;
-}
-
-.projects .acme {
-  grid-area: acme;
-}
-
-.projects .cv {
-  grid-area: cv;
-}
-
-.projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
+.project__sub .work {
   background-color: ivory;
   color: black;
   border-radius: 5px;
   font-size: 0.75rem;
+  width: 40%;
   display: grid;
   grid-gap: 0.2rem;
   grid-template-columns: 0.75fr 1fr;
@@ -416,7 +396,7 @@ body {
   grid-template-areas: "p_img p_head" "p_img p_desc" "p_img p_link";
 }
 
-.projects .yatzy .p_img, .projects .quiz .p_img, .projects .acme .p_img, .projects .cv .p_img {
+.project__sub .work .p_img {
   height: 100%;
   width: auto;
   max-width: 100%;
@@ -424,15 +404,15 @@ body {
   border-radius: 5px;
 }
 
-.projects .yatzy .p_head, .projects .quiz .p_head, .projects .acme .p_head, .projects .cv .p_head {
+.project__sub .work .p_head {
   grid-area: p_head;
 }
 
-.projects .yatzy .p_desc, .projects .quiz .p_desc, .projects .acme .p_desc, .projects .cv .p_desc {
+.project__sub .work .p_desc {
   grid-area: p_desc;
 }
 
-.projects .yatzy .p_link, .projects .quiz .p_link, .projects .acme .p_link, .projects .cv .p_link {
+.project__sub .work .p_link {
   grid-area: p_link;
   justify-self: center;
   border: 2px solid black;
@@ -446,49 +426,46 @@ body {
 }
 
 @media screen and (max-width: 900px) {
-  .projects {
+  .project__sub {
     padding-bottom: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
-  .projects h1 {
+  .project__sub h1 {
     margin-top: 5rem;
   }
-  .projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
+  .project__sub .work {
     width: 60%;
     height: auto;
   }
-  .projects .yatzy .p_img, .projects .quiz .p_img, .projects .acme .p_img, .projects .cv .p_img {
+  .project__sub .work .p_img {
     height: 100%;
     width: auto;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
+  .project__sub .work {
     width: 70%;
   }
 }
 
 @media only screen and (max-width: 550px) {
-  .projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
+  .project__sub .work {
     width: 90%;
   }
 }
 
 @media only screen and (max-width: 450px) {
-  .projects .yatzy, .projects .quiz, .projects .acme, .projects .cv {
+  .project__sub .work {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 80%;
     padding-bottom: 3rem;
   }
-  .projects .yatzy .p_img, .projects .quiz .p_img, .projects .acme .p_img, .projects .cv .p_img {
+  .project__sub .work .p_img {
     width: 100%;
   }
-  .projects .yatzy .p_desc, .projects .quiz .p_desc, .projects .acme .p_desc, .projects .cv .p_desc {
+  .project__sub .work .p_desc {
     padding: 0 2rem;
   }
 }
@@ -496,7 +473,7 @@ body {
 /*end of nesting projects*/
 #skills {
   height: 100%;
-  max-height: 100vh;
+  max-height: 300vh;
   margin-top: 2%;
   color: #ffe4c4;
   background-color: #001016;
@@ -579,57 +556,14 @@ body {
 }
 
 /*end of skills page*/
-.contact_page {
-  margin-top: 1%;
-  color: #ffe4c4;
-  background-color: #001016;
-  height: 100vh;
-  display: grid;
-  grid-gap: 1rem;
-  justify-content: center;
-  grid-template-columns: 0.2fr 1fr 1fr 0.2fr;
-  grid-template-rows: 1fr 0.25fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
-  grid-template-areas: ". . . . " ". contact_head . .  " ". contact_form maps ." ". contact_form maps ." ". contact_form maps ." ". contact_form  maps ." ". contact_form  maps ." ". contact_form  maps ." ". . . . ";
-  /*end of contact form*/
-  /*end of maps*/
+.maps {
+  width: 50%;
+  margin: 0px auto;
+  height: 100%;
+  max-height: 100vh;
 }
 
-.contact_page .contact_head {
-  font-size: 2.5rem;
-  grid-area: contact_head;
-}
-
-.contact_page .contact_form {
-  grid-area: contact_form;
-  max-width: 50rem;
-  background-color: ivory;
-  color: black;
-  padding-left: 2rem;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-}
-
-.contact_page .contact_form input, .contact_page .contact_form textarea {
-  width: 85%;
-}
-
-.contact_page .contact_form .get_in_touch {
-  margin-top: 1rem;
-}
-
-.contact_page .contact_form .submit {
-  margin: 1rem 0;
-}
-
-.contact_page .maps {
-  grid-area: maps;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.contact_page .maps .contact_link {
+.maps .contact_link {
   background-color: ivory;
   color: black;
   border: 1px solid black;
@@ -639,26 +573,19 @@ body {
   margin-bottom: 1rem;
 }
 
-@media only screen and (max-width: 700px) {
-  .contact_page {
-    display: grid;
-    height: 130vh;
-    grid-template-areas: ". . . . " ".  contact_head  . . " ". contact_form contact_form  . " ".  maps maps . ";
-  }
-  .contact_page .contact_form {
-    max-height: 100%;
-  }
-  .contact_page .contact_form .submit {
-    margin-bottom: 1rem;
+@media only screen and (max-width: 768px) {
+  .maps {
+    width: 80%;
   }
 }
 
-@media only screen and (max-width: 350px) {
-  .contact_page {
-    height: 150vh;
+@media only screen and (max-width: 450px) {
+  .maps {
+    width: 100%;
   }
 }
 
+/*end of maps*/
 .bottomNavigation {
   background-color: black;
   color: white;
@@ -681,7 +608,6 @@ body {
   .info {
     width: 60%;
     margin: 0px auto;
-    display: flex;
     justify-content: space-around;
   }
   .social_footer {
@@ -691,4 +617,3 @@ body {
     justify-content: space-around;
   }
 }
-/*# sourceMappingURL=cv.css.map */
